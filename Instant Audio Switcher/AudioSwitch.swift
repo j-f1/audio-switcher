@@ -26,9 +26,13 @@ enum DeviceType {
     }
 }
 
-class Device: Identifiable, Equatable {
+class Device: Identifiable, Equatable, Hashable {
     static func == (lhs: Device, rhs: Device) -> Bool {
         lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 
     let id: AudioObjectID
@@ -57,7 +61,7 @@ extension Device {
         return Device(id: id)
     }
 
-    static var all: [Device]? {
+    static var all: [Device] {
         var length: UInt32 = sizeOf(property: kAudioHardwarePropertyDevices)!
         var err: OSStatus = 0
         let devices = [AudioDeviceID](unsafeUninitializedCapacity: Int(length)) { (ptr, len) in
@@ -78,9 +82,13 @@ extension Device {
             )
         }
         if err != kAudioHardwareNoError {
-            return nil
+            return []
         }
         return devices.map(Device.init(id:))
+    }
+
+    static var named: [Device] {
+        all.filter { $0.name != nil }
     }
 }
 
