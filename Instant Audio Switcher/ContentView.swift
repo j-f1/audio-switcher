@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    let device = Device.selected(for: .output)
+    @State var current = Device.selected(for: .output)
+    let all = Device.all!.filter({ $0.name != nil })
     var body: some View {
         VStack {
-            if let device = device {
+            if let device = current {
                 Text("Hello, \(device.name ?? "<???>") [in: \(device.isInput.description), out: \(device.isOutput.description)]!")
             }
             Text("\(Device.all!.compactMap(\.name).joined(separator: ", "))")
+            Button("Next") {
+                let idx = all.firstIndex(where: { $0 == current })!
+                current = all[(idx + 1) % all.count]
+                current!.activate(for: .output)
+            }
         }
             .fixedSize()
             .padding()

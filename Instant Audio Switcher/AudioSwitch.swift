@@ -26,38 +26,46 @@ enum DeviceType {
     }
 }
 
-class Device {
+class Device: Identifiable, Equatable {
+    static func == (lhs: Device, rhs: Device) -> Bool {
+        lhs.id == rhs.id
+    }
+
     let id: AudioObjectID
     init(id: AudioObjectID) {
         self.id = id
     }
 
     var name: String? {
-        return read(property: kAudioDevicePropertyDeviceNameCFString, from: id, element: .master, defaultValue: "" as CFString) as String?
+        return read(property: kAudioDevicePropertyDeviceNameCFString, from: id, defaultValue: "" as CFString) as String?
     }
 
     var isOutput: Bool {
-        sizeOf(property: kAudioDevicePropertyStreams, from: id, in: .output, element: .master) != nil
+        sizeOf(property: kAudioDevicePropertyStreams, from: id, in: .output) != nil
     }
     var isInput: Bool {
-        sizeOf(property: kAudioDevicePropertyStreams, from: id, in: .input, element: .master) != nil
+        sizeOf(property: kAudioDevicePropertyStreams, from: id, in: .input) != nil
+    }
+
+    func activate(for type: DeviceType) {
+        _ = set(property: type.mSelector, in: .global, to: id)
     }
 }
 extension Device {
     static func selected(for type: DeviceType) -> Device? {
-        guard let id = read(property: type.mSelector, element: .master, defaultValue: AudioDeviceID(kAudioDeviceUnknown)) else { return nil }
+        guard let id = read(property: type.mSelector, defaultValue: AudioDeviceID(kAudioDeviceUnknown)) else { return nil }
         return Device(id: id)
     }
 
     static var all: [Device]? {
-        var length: UInt32 = sizeOf(property: kAudioHardwarePropertyDevices, element: .master)!
+        var length: UInt32 = sizeOf(property: kAudioHardwarePropertyDevices)!
         var err: OSStatus = 0
         let devices = [AudioDeviceID](unsafeUninitializedCapacity: Int(length)) { (ptr, len) in
             len = Int(length)
             var address = AudioObjectPropertyAddress(
                 mSelector: kAudioHardwarePropertyDevices,
                 mScope: AudioObjectProperty.Scope.global.rawValue,
-                mElement: AudioObjectProperty.Element.master.rawValue
+                mElement: kAudioObjectPropertyElementMaster
             )
 
             err = AudioObjectGetPropertyData(
@@ -80,7 +88,6 @@ func read<Data>(
     property: AudioObjectPropertySelector,
     from object: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
     in scope: AudioObjectProperty.Scope = .global,
-    element: AudioObjectProperty.Element,
     defaultValue: Data
 ) -> Data? {
     var val = defaultValue
@@ -90,7 +97,7 @@ func read<Data>(
         var address = AudioObjectPropertyAddress(
             mSelector: property,
             mScope: scope.rawValue,
-            mElement: element.rawValue
+            mElement: kAudioObjectPropertyElementMaster
         )
 
         err = AudioObjectGetPropertyData(
@@ -112,8 +119,7 @@ func set<Data>(
     property: AudioObjectPropertySelector,
     from object: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
     in scope: AudioObjectProperty.Scope = .global,
-    to value: Data,
-    element: AudioObjectProperty.Element
+    to value: Data
 ) -> Bool {
     var val = value
     var err: OSStatus!
@@ -122,7 +128,7 @@ func set<Data>(
         var address = AudioObjectPropertyAddress(
             mSelector: property,
             mScope: scope.rawValue,
-            mElement: element.rawValue
+            mElement: kAudioObjectPropertyElementMaster
         )
 
         err = AudioObjectSetPropertyData(
@@ -140,15 +146,14 @@ func set<Data>(
 func sizeOf(
     property: AudioObjectPropertySelector,
     from object: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
-    in scope: AudioObjectProperty.Scope = .global,
-    element: AudioObjectProperty.Element
+    in scope: AudioObjectProperty.Scope = .global
 ) -> UInt32? {
     var dataSize: UInt32 = 0
     var err: OSStatus!
     var address = AudioObjectPropertyAddress(
         mSelector: property,
         mScope: scope.rawValue,
-        mElement: element.rawValue
+        mElement: kAudioObjectPropertyElementMaster
     )
 
     err = AudioObjectGetPropertyDataSize(
@@ -182,17 +187,6 @@ enum AudioObjectProperty {
             case .input: return kAudioObjectPropertyScopeInput
             case .output: return kAudioObjectPropertyScopeOutput
             case .playThrough: return kAudioObjectPropertyScopePlayThrough
-            }
-        }
-    }
-    enum Element: AudioObjectPropertyElement {
-        case wildcard
-        case master
-
-        var rawValue: AudioObjectPropertyElement {
-            switch self {
-            case .wildcard: return kAudioObjectPropertyElementWildcard
-            case .master:   return kAudioObjectPropertyElementMaster
             }
         }
     }
