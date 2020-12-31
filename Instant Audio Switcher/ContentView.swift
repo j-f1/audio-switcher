@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    let device = Device.selected(for: .output)
     var body: some View {
-        Text("Hello, world!")
+        VStack {
+            if let device = device {
+                Text("Hello, \(device.name ?? "<???>") [in: \(device.isInput.description), out: \(device.isOutput.description)]!")
+            }
+            Text("\(Device.all!.compactMap(\.name).joined(separator: ", "))")
+        }
+            .fixedSize()
             .padding()
     }
 }

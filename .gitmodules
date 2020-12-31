@@ -1,0 +1,3 @@
+[submodule "Instant Audio Switcher/switchaudio-osx"]
+	path = Instant Audio Switcher/switchaudio-osx
+	url = https://github.com/deweller/switchaudio-osx
