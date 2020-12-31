@@ -7,12 +7,14 @@
 
 import Cocoa
 import Defaults
+import SwiftUI
+import MenuBuilder
 
 class StatusBarController {
     private var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     private var menu = NSMenu()
 
-    init() {
+    init(@MenuBuilder items: () -> [NSMenuItem?]) {
 //        statusItem.button!.image = #imageLiteral(resourceName: "StatusBarIcon")
 //        statusItem.button!.image?.size = NSSize(width: 18.0, height: 18.0)
 //        statusItem.button!.image?.isTemplate = true
@@ -21,9 +23,7 @@ class StatusBarController {
         statusItem.button!.action = #selector(onClick)
         statusItem.button!.sendAction(on: [.rightMouseUp, .leftMouseUp, .rightMouseDown, .leftMouseDown])
 
-        let item = NSMenuItem(title: "Menu", action: nil, keyEquivalent: "")
-        item.isEnabled = false
-        menu.addItem(item)
+        self.menu.replaceItems(with: items)
     }
 
     @objc func onClick() {
@@ -33,7 +33,7 @@ class StatusBarController {
             event.modifierFlags.contains(.option) ||
             event.type == .rightMouseDown ||
             event.type == .rightMouseUp
-        let shouldActivate = Defaults[.clickToCycle] ? !override : override
+        let shouldActivate = Defaults[.clickToActivate] ? !override : override
 
         if shouldActivate && (event.type == .leftMouseUp || event.type == .rightMouseUp) {
 //            selectNextLayout()

@@ -12,7 +12,6 @@ struct Instant_Audio_SwitcherApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
         }
     }
 }

@@ -10,5 +10,5 @@ import Defaults
 extension Defaults.Keys {
     static let deviceName = Key<String?>("deviceName", default: Device.selected(for: .output)?.name)
     static let showInDock = Key<Bool>("showInDock", default: true)
-    static let clickToCycle = Key<Bool>("clickToCycle", default: false)
+    static let clickToActivate = Key<Bool>("clickToActivate", default: false)
 }
