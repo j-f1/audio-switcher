@@ -6,17 +6,32 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct ContentView: View {
-    @State var current = Device.selected(for: .output)
+    @Default(.deviceName) var selectedDevice
     var body: some View {
-        List(selection: $current) {
-            ForEach(Device.named) { device in
-                Text(device.name!).tag(device)
+        VStack(alignment: .leading) {
+            Text("Select device to activate in menu bar").font(.headline)
+                .fixedSize()
+            List(selection: $selectedDevice) {
+                ForEach(Device.named) { device in
+                    Text(device.name!).tag(device.name!)
+                }
             }
-        }
-        .listStyle(SidebarListStyle())
-        .onChange(of: current, perform: { $0?.activate(for: .output) })
+            .padding(.horizontal, -10)
+            .frame(minHeight: 100)
+            .toolbar {
+                Button {
+                    if let name = selectedDevice,
+                       let device = Device.named(name) {
+                        device.activate(for: .output)
+                    }
+                } label: {
+                    Image(systemName: "checkmark")
+                }
+            }
+        }.padding()
     }
 }
 

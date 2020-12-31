@@ -61,6 +61,10 @@ extension Device {
         return Device(id: id)
     }
 
+    static func named(_ name: String) -> Device? {
+        Device.all.first { $0.name == name }
+    }
+
     static var all: [Device] {
         var length: UInt32 = sizeOf(property: kAudioHardwarePropertyDevices)!
         var err: OSStatus = 0
