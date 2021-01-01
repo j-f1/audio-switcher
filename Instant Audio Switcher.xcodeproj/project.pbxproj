@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		85BB5333259D1F2A00F0AC19 /* Instant_Audio_SwitcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5332259D1F2A00F0AC19 /* Instant_Audio_SwitcherApp.swift */; };
 		85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */; };
 		85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5336259D1F2C00F0AC19 /* Assets.xcassets */; };
 		85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5339259D1F2C00F0AC19 /* Preview Assets.xcassets */; };
@@ -18,13 +17,12 @@
 		85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF7259E04EE005FF96F /* StatusBarController.swift */; };
 		85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCFA259E07EF005FF96F /* Defaults.swift */; };
 		85C4DCFF259E0901005FF96F /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 85C4DCFE259E0901005FF96F /* Preferences */; };
-		85C4DD0A259E2B3C005FF96F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DD09259E2B3C005FF96F /* SettingsView.swift */; };
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
+		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Audio Switcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		85BB5332259D1F2A00F0AC19 /* Instant_Audio_SwitcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instant_Audio_SwitcherApp.swift; sourceTree = "<group>"; };
 		85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePickerView.swift; sourceTree = "<group>"; };
 		85BB5336259D1F2C00F0AC19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85BB5339259D1F2C00F0AC19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -35,7 +33,7 @@
 		85C4DCF4259E0405005FF96F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85C4DCF7259E04EE005FF96F /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = SOURCE_ROOT; };
 		85C4DCFA259E07EF005FF96F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		85C4DD09259E2B3C005FF96F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85F1D0DC259E754D001831C0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				85C4DCF7259E04EE005FF96F /* StatusBarController.swift */,
-				85BB5332259D1F2A00F0AC19 /* Instant_Audio_SwitcherApp.swift */,
 				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
 				85C4DCFA259E07EF005FF96F /* Defaults.swift */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
-				85C4DD09259E2B3C005FF96F /* SettingsView.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
+				85F1D0DC259E754D001831C0 /* Main.storyboard */,
 				85BB5346259D1FF400F0AC19 /* switchaudio-osx */,
 				85BB5336259D1F2C00F0AC19 /* Assets.xcassets */,
 				85BB533B259D1F2C00F0AC19 /* Info.plist */,
@@ -165,6 +162,7 @@
 				85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */,
 				85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */,
 				85BB5347259D1FF400F0AC19 /* switchaudio-osx in Resources */,
+				85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,12 +174,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */,
-				85C4DD0A259E2B3C005FF96F /* SettingsView.swift in Sources */,
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
 				85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */,
 				85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */,
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
-				85BB5333259D1F2A00F0AC19 /* Instant_Audio_SwitcherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,20 +17,16 @@ extension Preferences.PaneIdentifier {
     static let device = Self("device")
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+@NSApplicationMain
+@objc class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBar: StatusBarController?
+    let devicesWC: NSWindowController = NSStoryboard.main!.instantiateController(identifier: "DevicesWindow")
 
-    let prefsWC = PreferencesWindowController(panes: [
-        Preferences.Pane(identifier: .general, title: "General", toolbarIcon: NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)!) {
-            SettingsView()  
-        },
-        Preferences.Pane(identifier: .device, title: "Device", toolbarIcon: NSImage(systemSymbolName: "headphones", accessibilityDescription: nil)!) {
-            DevicePickerView()
-        }
-    ])
-    let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
     func applicationDidFinishLaunching(_ notification: Notification) {
+        devicesWC.contentViewController = NSHostingController(rootView: DevicePickerView())
+        self.devicesWC.window!.makeKeyAndOrderFront(nil)
         statusBar = StatusBarController {
+            let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
             if let name = Defaults[.deviceName],
                let device = Device.named(name) {
                 MenuItem("Activate \(name)")
@@ -39,9 +35,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     }
             }
             SeparatorItem()
-            MenuItem("Preferences…")
-                .onSelect { self.prefsWC.show() }
-                .shortcut(",")
+            MenuItem("Preferences") {
+                MenuItem("Show in Dock")
+                    .state(Defaults[.showInDock] ? .on : .off)
+                    .onSelect { Defaults[.showInDock].toggle() }
+                MenuItem("Click to Activate")
+                    .toolTip("Click menu item to activate")
+                    .state(Defaults[.clickToActivate] ? .on : .off)
+                    .onSelect { Defaults[.clickToActivate].toggle() }
+                MenuItem("Device to Activate…")
+                    .onSelect {
+                        self.devicesWC.window!.makeKeyAndOrderFront(nil)
+                    }
+            }
             SeparatorItem()
             MenuItem("About \(appName)")
             MenuItem("Send Feedback…")
@@ -55,11 +61,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         NSApp.setActivationPolicy(Defaults[.showInDock] ? .regular : .accessory)
-        Defaults.observe(.showInDock) { change in
+        Defaults.observe(.showInDock) { _ in
             NSApp.setActivationPolicy(Defaults[.showInDock] ? .regular : .accessory)
-            if change.oldValue && !change.newValue {
-                self.prefsWC.show()
-            }
         }.tieToLifetime(of: self)
     }
 }

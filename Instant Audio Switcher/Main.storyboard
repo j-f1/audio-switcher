@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="Instant Audio Switcher" id="bar-Na-rxX">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Instant Audio Switcher" id="C9D-YG-zva">
+                                    <items>
+                                        <menuItem isSeparatorItem="YES" id="NDO-YM-M5L"/>
+                                        <menuItem title="Services" id="JI2-lD-O2g">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="bIR-t4-UZ4"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="WBX-VM-65a"/>
+                                        <menuItem title="Quit Input Sources" keyEquivalent="q" id="kfo-BA-Zv8">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="tYZ-Wg-RcO"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" id="TTD-gt-4qj">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="wsw-Sy-zrP">
+                                    <items>
+                                        <menuItem title="Close" keyEquivalent="w" id="WIE-FF-MJY">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="Yjl-ra-iRc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Bring All to Front" id="2ur-NR-qS5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="MIu-eC-Rum"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" id="nAI-xG-5y8">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="g1a-zZ-dPr">
+                                    <items>
+                                        <menuItem title="Application Help" keyEquivalent="?" id="LOB-JJ-byJ">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="coO-kE-Rmr"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Instant_Audio_Switcher" customModuleProvider="target"/>
+                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70" y="-307"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="FHu-Ag-Ovb">
+            <objects>
+                <windowController storyboardIdentifier="DevicesWindow" id="vRF-g9-cLh" sceneMemberID="viewController">
+                    <window key="window" title="Select device to activate when clicking menu bar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" toolbarStyle="compact" id="wgK-OB-xju">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                        <view key="contentView" id="I8C-mG-8uq">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="vRF-g9-cLh" id="dCH-Ii-toM"/>
+                        </connections>
+                    </window>
+                </windowController>
+                <customObject id="8am-8Y-jeH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="0.0"/>
+        </scene>
+    </scenes>
+</document>
