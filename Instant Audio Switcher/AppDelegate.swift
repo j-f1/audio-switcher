@@ -41,10 +41,38 @@ extension Preferences.PaneIdentifier {
                 MenuItem("Click to Activate")
                     .toolTip("Click menu item to activate")
                     .state(Defaults[.clickToActivate] ? .on : .off)
-                    .onSelect { Defaults[.clickToActivate].toggle() }
+                    .onSelect {
+                        if !Defaults[.clickToActivate] {
+                            let alert = NSAlert()
+                            alert.alertStyle = .informational
+                            alert.messageText = "Enabling Click to Activate"
+                            let tf = NSTextField(frame: .init(origin: .zero, size: .init(width: 220, height: 75)))
+                            let str = NSMutableAttributedString()
+                            str.append(.init(string: "When enabled, click the "))
+                            let attachment = NSTextAttachment()
+                            attachment.image = NSImage(systemSymbolName: Defaults[.iconName], accessibilityDescription: nil)!
+                            str.append(.init(attachment: attachment))
+                            str.append(.init(string: " icon in the menu bar to switch to “\(Defaults[.deviceName] ?? "<unknown device>")\u{202d}.” "
+                                             + "Option-click, control-click, or right-click the menu item to open the menu and change your settings."))
+                            tf.attributedStringValue = str
+                            tf.isEditable = false
+                            tf.drawsBackground = false
+                            tf.isBezeled = false
+                            alert.accessoryView = tf
+                            alert.addButton(withTitle: "Enable")
+                            alert.addButton(withTitle: "Cancel")
+
+                            if alert.runModal() == .alertFirstButtonReturn {
+                                Defaults[.clickToActivate] = true
+                            }
+                        } else {
+                            Defaults[.clickToActivate] = false
+                        }
+                    }
                 MenuItem("Device to Activate…")
                     .onSelect {
                         NSApp.activate(ignoringOtherApps: true)
+                        self.devicesWC.window!.center()
                         self.devicesWC.window!.makeKeyAndOrderFront(nil)
                     }
             }
