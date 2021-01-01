@@ -19,6 +19,8 @@
 		85C4DCFF259E0901005FF96F /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 85C4DCFE259E0901005FF96F /* Preferences */; };
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
 		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
+		85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E3259F863D001831C0 /* IconPickerView.swift */; };
+		85F1D0E7259F8B19001831C0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E6259F8B19001831C0 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +33,11 @@
 		85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSwitch.swift; sourceTree = "<group>"; };
 		85BB5346259D1FF400F0AC19 /* switchaudio-osx */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "switchaudio-osx"; sourceTree = "<group>"; };
 		85C4DCF4259E0405005FF96F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		85C4DCF7259E04EE005FF96F /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = SOURCE_ROOT; };
+		85C4DCF7259E04EE005FF96F /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		85C4DCFA259E07EF005FF96F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		85F1D0DC259E754D001831C0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		85F1D0E3259F863D001831C0 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
+		85F1D0E6259F8B19001831C0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 		85BB5331259D1F2A00F0AC19 /* Instant Audio Switcher */ = {
 			isa = PBXGroup;
 			children = (
+				85F1D0E6259F8B19001831C0 /* SettingsView.swift */,
+				85F1D0E3259F863D001831C0 /* IconPickerView.swift */,
 				85C4DCF7259E04EE005FF96F /* StatusBarController.swift */,
 				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
 				85C4DCFA259E07EF005FF96F /* Defaults.swift */,
@@ -173,11 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85F1D0E7259F8B19001831C0 /* SettingsView.swift in Sources */,
 				85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */,
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
 				85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */,
 				85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */,
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
+				85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

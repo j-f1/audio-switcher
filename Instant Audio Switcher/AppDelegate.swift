@@ -23,7 +23,7 @@ extension Preferences.PaneIdentifier {
     let devicesWC: NSWindowController = NSStoryboard.main!.instantiateController(identifier: "DevicesWindow")
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        devicesWC.contentViewController = NSHostingController(rootView: DevicePickerView())
+        devicesWC.contentViewController = NSHostingController(rootView: SettingsView())
         self.devicesWC.window!.makeKeyAndOrderFront(nil)
         statusBar = StatusBarController {
             let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
