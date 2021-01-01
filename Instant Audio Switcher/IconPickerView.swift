@@ -11,10 +11,6 @@ struct IconPickerView: View {
     @Binding var selectedIcon: String
     var body: some View {
         HStack {
-            Text("Icon").font(.headline)
-            Spacer()
-        }
-        HStack {
             VStack {
                 ForEach(icons, id: \.self) { row in
                     HStack {
