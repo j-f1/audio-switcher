@@ -12,12 +12,4 @@ extension Defaults.Keys {
     static let showInDock = Key<Bool>("showInDock", default: true)
     static let clickToActivate = Key<Bool>("clickToActivate", default: false)
     static let iconName = Key<String>("iconName", default: "sparkles")
-    static let iconSize = Key<IconSize>("iconSize", default: .large)
-}
-
-enum IconSize: String, Codable, CaseIterable, Identifiable {
-    case regular
-    case large
-
-    var id: String { rawValue }
 }

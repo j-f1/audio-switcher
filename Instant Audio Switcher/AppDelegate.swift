@@ -24,7 +24,6 @@ extension Preferences.PaneIdentifier {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         devicesWC.contentViewController = NSHostingController(rootView: SettingsView())
-        self.devicesWC.window!.makeKeyAndOrderFront(nil)
         statusBar = StatusBarController {
             let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
             if let name = Defaults[.deviceName],
@@ -45,6 +44,7 @@ extension Preferences.PaneIdentifier {
                     .onSelect { Defaults[.clickToActivate].toggle() }
                 MenuItem("Device to Activate…")
                     .onSelect {
+                        NSApp.activate(ignoringOtherApps: true)
                         self.devicesWC.window!.makeKeyAndOrderFront(nil)
                     }
             }
@@ -64,5 +64,9 @@ extension Preferences.PaneIdentifier {
         Defaults.observe(.showInDock) { _ in
             NSApp.setActivationPolicy(Defaults[.showInDock] ? .regular : .accessory)
         }.tieToLifetime(of: self)
+    }
+
+    func applicationDidResignActive(_ notification: Notification) {
+        devicesWC.window?.setIsVisible(false)
     }
 }

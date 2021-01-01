@@ -9,18 +9,10 @@ import SwiftUI
 
 struct IconPickerView: View {
     @Binding var selectedIcon: String
-    @Binding var iconSize: IconSize
     var body: some View {
         HStack {
             Text("Icon").font(.headline)
             Spacer()
-            Picker("Size:", selection: $iconSize) {
-                ForEach(IconSize.allCases) { size in
-                    Text(size.rawValue).tag(size)
-                }
-            }
-            .pickerStyle(RadioGroupPickerStyle())
-            .horizontalRadioGroupLayout()
         }
         HStack {
             VStack {
@@ -101,9 +93,8 @@ let icons = [
 struct IconPickerView_Previews: PreviewProvider {
     struct TestView: View {
         @State var icon = "sparkles"
-        @State var size = IconSize.regular
         var body: some View {
-            IconPickerView(selectedIcon: $icon, iconSize: $size)
+            IconPickerView(selectedIcon: $icon)
         }
     }
     static var previews: some View {

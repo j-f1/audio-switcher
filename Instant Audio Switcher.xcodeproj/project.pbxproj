@@ -20,7 +20,7 @@
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
 		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
 		85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E3259F863D001831C0 /* IconPickerView.swift */; };
-		85F1D0E7259F8B19001831C0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E6259F8B19001831C0 /* SettingsView.swift */; };
+		85F1D0EB259FBCDD001831C0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E6259F8B19001831C0 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,7 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85F1D0E7259F8B19001831C0 /* SettingsView.swift in Sources */,
+				85F1D0EB259FBCDD001831C0 /* SettingsView.swift in Sources */,
 				85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */,
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
 				85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */,

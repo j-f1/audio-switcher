@@ -11,12 +11,11 @@ import Defaults
 struct SettingsView: View {
     @Default(.deviceName) var selectedDevice
     @Default(.iconName) var selectedIcon
-    @Default(.iconSize) var iconSize
     var body: some View {
         VStack(alignment: .leading) {
             DevicePickerView(selectedDevice: $selectedDevice)
             Divider().padding(.vertical, 8)
-            IconPickerView(selectedIcon: $selectedIcon, iconSize: $iconSize)
+            IconPickerView(selectedIcon: $selectedIcon)
         }.padding().frame(width: 328)
     }
 }
