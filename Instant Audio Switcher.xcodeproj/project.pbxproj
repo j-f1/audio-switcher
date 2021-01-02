@@ -15,11 +15,13 @@
 		85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF4259E0405005FF96F /* AppDelegate.swift */; };
 		85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF7259E04EE005FF96F /* StatusBarController.swift */; };
 		85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCFA259E07EF005FF96F /* Defaults.swift */; };
-		85C4DCFF259E0901005FF96F /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 85C4DCFE259E0901005FF96F /* Preferences */; };
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
 		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
 		85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E3259F863D001831C0 /* IconPickerView.swift */; };
 		85F1D0EB259FBCDD001831C0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E6259F8B19001831C0 /* SettingsView.swift */; };
+		85F1D0F225A0D2B3001831C0 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0F125A0D2B3001831C0 /* AboutScreen */; };
+		85F1D0F525A0D2C4001831C0 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */; };
+		85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		85F1D0DC259E754D001831C0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		85F1D0E3259F863D001831C0 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		85F1D0E6259F8B19001831C0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
+		85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransientWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +49,7 @@
 			files = (
 				85C4DCF2259D7A07005FF96F /* Defaults in Frameworks */,
 				85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */,
-				85C4DCFF259E0901005FF96F /* Preferences in Frameworks */,
+				85F1D0F225A0D2B3001831C0 /* AboutScreen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +81,8 @@
 				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
 				85C4DCFA259E07EF005FF96F /* Defaults.swift */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
+				85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */,
+				85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
 				85F1D0DC259E754D001831C0 /* Main.storyboard */,
 				85BB5336259D1F2C00F0AC19 /* Assets.xcassets */,
@@ -113,8 +119,8 @@
 			name = "Instant Audio Switcher";
 			packageProductDependencies = (
 				85C4DCF1259D7A07005FF96F /* Defaults */,
-				85C4DCFE259E0901005FF96F /* Preferences */,
 				85F1D0D5259E6AA9001831C0 /* MenuBuilder */,
+				85F1D0F125A0D2B3001831C0 /* AboutScreen */,
 			);
 			productName = "Instant Audio Switcher";
 			productReference = 85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */;
@@ -145,8 +151,8 @@
 			mainGroup = 85BB5326259D1F2A00F0AC19;
 			packageReferences = (
 				85C4DCF0259D7A07005FF96F /* XCRemoteSwiftPackageReference "Defaults" */,
-				85C4DCFD259E0901005FF96F /* XCRemoteSwiftPackageReference "Preferences" */,
 				85F1D0D4259E6AA9001831C0 /* XCRemoteSwiftPackageReference "MenuBuilder" */,
+				85F1D0F025A0D2B3001831C0 /* XCRemoteSwiftPackageReference "AboutScreen" */,
 			);
 			productRefGroup = 85BB5330259D1F2A00F0AC19 /* Products */;
 			projectDirPath = "";
@@ -176,12 +182,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F1D0EB259FBCDD001831C0 /* SettingsView.swift in Sources */,
+				85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */,
 				85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */,
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
 				85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */,
 				85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */,
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
 				85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */,
+				85F1D0F525A0D2C4001831C0 /* AboutScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,20 +391,20 @@
 				minimumVersion = 4.1.0;
 			};
 		};
-		85C4DCFD259E0901005FF96F /* XCRemoteSwiftPackageReference "Preferences" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Preferences";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
 		85F1D0D4259E6AA9001831C0 /* XCRemoteSwiftPackageReference "MenuBuilder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/j-f1/MenuBuilder";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
+			};
+		};
+		85F1D0F025A0D2B3001831C0 /* XCRemoteSwiftPackageReference "AboutScreen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/j-f1/AboutScreen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -407,15 +415,15 @@
 			package = 85C4DCF0259D7A07005FF96F /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
 		};
-		85C4DCFE259E0901005FF96F /* Preferences */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85C4DCFD259E0901005FF96F /* XCRemoteSwiftPackageReference "Preferences" */;
-			productName = Preferences;
-		};
 		85F1D0D5259E6AA9001831C0 /* MenuBuilder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 85F1D0D4259E6AA9001831C0 /* XCRemoteSwiftPackageReference "MenuBuilder" */;
 			productName = MenuBuilder;
+		};
+		85F1D0F125A0D2B3001831C0 /* AboutScreen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85F1D0F025A0D2B3001831C0 /* XCRemoteSwiftPackageReference "AboutScreen" */;
+			productName = AboutScreen;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

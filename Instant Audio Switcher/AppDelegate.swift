@@ -7,24 +7,19 @@
 
 import Cocoa
 import Defaults
-import Preferences
 import SwiftUI
 import CoreFoundation
 import MenuBuilder
 
-extension Preferences.PaneIdentifier {
-  static let general = Self("general")
-  static let device = Self("device")
-}
-
 @NSApplicationMain
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
   var statusBar: StatusBarController?
-  let devicesWC: NSWindowController = NSStoryboard.main!.instantiateController(identifier: "DevicesWindow")
-  
+  let prefsWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "PrefsWindow")
+  let aboutWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "AboutWindow")
+
   func applicationDidFinishLaunching(_ notification: Notification) {
-    devicesWC.contentViewController = NSHostingController(rootView: SettingsView())
-    devicesWC.window!.backgroundColor = NSColor.underPageBackgroundColor
+    prefsWC.contentViewController = NSHostingController(rootView: SettingsView())
+    prefsWC.window!.backgroundColor = NSColor.underPageBackgroundColor
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
       if let name = Defaults[.deviceName],
@@ -33,17 +28,18 @@ extension Preferences.PaneIdentifier {
           .onSelect {
             device.activate(for: .output)
           }
+        SeparatorItem()
       }
-      SeparatorItem()
       MenuItem("Preferences")
         .shortcut(",")
         .onSelect {
-          NSApp.activate(ignoringOtherApps: true)
-          self.devicesWC.window!.center()
-          self.devicesWC.window!.makeKeyAndOrderFront(nil)
+          self.prefsWC.open()
         }
       SeparatorItem()
       MenuItem("About \(appName)")
+        .onSelect {
+          self.aboutWC.open()
+        }
       MenuItem("Send Feedback…")
         .onSelect {
           NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/input-sources/issues/new")!)
@@ -60,6 +56,7 @@ extension Preferences.PaneIdentifier {
   }
   
   func applicationDidResignActive(_ notification: Notification) {
-    devicesWC.window?.close()
+    prefsWC.window?.close()
+    aboutWC.window?.close()
   }
 }

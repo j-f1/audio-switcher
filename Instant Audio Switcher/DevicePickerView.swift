@@ -8,8 +8,6 @@
 import SwiftUI
 import Defaults
 
-import Preferences
-
 public struct DevicePickerView: View {
   @Binding var selectedDevice: String?
   @State var isCustomDevice: Bool

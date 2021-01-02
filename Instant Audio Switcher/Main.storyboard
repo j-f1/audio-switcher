@@ -74,8 +74,8 @@
         <!--Window Controller-->
         <scene sceneID="FHu-Ag-Ovb">
             <objects>
-                <windowController storyboardIdentifier="DevicesWindow" id="vRF-g9-cLh" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="wgK-OB-xju">
+                <windowController storyboardIdentifier="PrefsWindow" id="vRF-g9-cLh" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="wgK-OB-xju">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
@@ -92,6 +92,44 @@
                 <customObject id="8am-8Y-jeH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="36" y="0.0"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="j9h-QS-8zW">
+            <objects>
+                <windowController storyboardIdentifier="AboutWindow" id="JRt-gi-SPP" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="B8i-22-oDr">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                        <view key="contentView" id="dK7-Vx-bsR">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="JRt-gi-SPP" id="2bM-Ve-hci"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="rLz-MN-h4m" kind="relationship" relationship="window.shadowedContentViewController" id="r65-TG-iOS"/>
+                    </connections>
+                </windowController>
+                <customObject id="eRL-nc-3CD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-317" y="426"/>
+        </scene>
+        <!--About ScreenVC-->
+        <scene sceneID="OqS-nT-OSN">
+            <objects>
+                <viewController id="rLz-MN-h4m" customClass="AboutScreenVC" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ozT-sA-CZc">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="tmd-nf-p1U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="395"/>
         </scene>
     </scenes>
 </document>

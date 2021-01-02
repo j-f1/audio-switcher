@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "AboutScreen",
+        "repositoryURL": "https://github.com/j-f1/AboutScreen.git",
+        "state": {
+          "branch": null,
+          "revision": "72582a373dcb23b286cd3547f701ee84cb60e815",
+          "version": "1.5.7"
+        }
+      },
+      {
+        "package": "BetterSafariView",
+        "repositoryURL": "https://github.com/boherna/BetterSafariView",
+        "state": {
+          "branch": null,
+          "revision": "04e067b9a29fc634138e761d36028d22eb5bb41c",
+          "version": "2.2.5"
+        }
+      },
+      {
         "package": "Defaults",
         "repositoryURL": "https://github.com/sindresorhus/Defaults",
         "state": {
@@ -11,21 +29,21 @@
         }
       },
       {
+        "package": "Helpers",
+        "repositoryURL": "https://github.com/j-f1/ios-helpers",
+        "state": {
+          "branch": null,
+          "revision": "f4896e0090d3e1ad1f541cceef67f521baa08b07",
+          "version": "1.2.0"
+        }
+      },
+      {
         "package": "MenuBuilder",
         "repositoryURL": "https://github.com/j-f1/MenuBuilder",
         "state": {
           "branch": null,
           "revision": "a1dc1466984fca759b9ee9775d30c4809fd4a2c0",
           "version": "1.0.1"
-        }
-      },
-      {
-        "package": "Preferences",
-        "repositoryURL": "https://github.com/sindresorhus/Preferences",
-        "state": {
-          "branch": null,
-          "revision": "4802a493acef50c814e4eb63e9a44e0941ec8883",
-          "version": "2.2.0"
         }
       }
     ]
