@@ -15,7 +15,9 @@ import MenuBuilder
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
   var statusBar: StatusBarController?
   let prefsWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "PrefsWindow")
+  #if canImport(AboutScreen)
   let aboutWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "AboutWindow")
+  #endif
 
   func applicationDidFinishLaunching(_ notification: Notification) {
     prefsWC.contentViewController = NSHostingController(rootView: SettingsView())
@@ -36,13 +38,15 @@ import MenuBuilder
           self.prefsWC.open()
         }
       SeparatorItem()
+      #if canImport(AboutScreen)
       MenuItem("About \(appName)")
         .onSelect {
           self.aboutWC.open()
         }
+      #endif
       MenuItem("Send Feedback…")
         .onSelect {
-          NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/input-sources/issues/new")!)
+          NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/audio-switcher/issues/new")!)
         }
       SeparatorItem()
       MenuItem("Quit \(appName)")
@@ -57,6 +61,8 @@ import MenuBuilder
   
   func applicationDidResignActive(_ notification: Notification) {
     prefsWC.window?.close()
+    #if canImport(AboutScreen)
     aboutWC.window?.close()
+    #endif
   }
 }

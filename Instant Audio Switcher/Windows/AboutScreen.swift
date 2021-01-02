@@ -5,6 +5,7 @@
 //  Created by Jed Fox on 1/2/21.
 //
 
+#if canImport(AboutScreen)
 import AboutScreen
 import SwiftUI
 
@@ -42,3 +43,4 @@ class AboutScreenVC: NSHostingController<AnyView> {
     ))
   }
 }
+#endif
