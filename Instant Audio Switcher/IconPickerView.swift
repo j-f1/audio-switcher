@@ -9,36 +9,84 @@ import SwiftUI
 
 struct IconPickerView: View {
     @Binding var selectedIcon: String
+    // work around some weirdness where the hover state doesn’t get cleared
+    @State var hoveringIcon: String?
     var body: some View {
-        HStack {
-            VStack {
-                ForEach(icons, id: \.self) { row in
-                    HStack {
-                        ForEach(row, id: \.self) { icon in
-                            Button(action: {
-                                selectedIcon = icon
-                            }) {
-                                let img = Image(systemName: icon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 25, height: 25)
-                                    .padding(5)
-                                if selectedIcon == icon {
-                                    img.background(
-                                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                            .fill(Color.accentColor)
-                                    )
-                                    .foregroundColor(.white)
-                                } else {
-                                    img
-                                }
-                            }.buttonStyle(BorderlessButtonStyle())
-                        }
+        VStack(spacing: 0) {
+            Text(hoveringIcon ?? "None")
+            ForEach(icons, id: \.self) { row in
+                HStack(spacing: 0) {
+                    ForEach(row, id: \.self) { icon in
+                        Button(action: { selectedIcon = icon }) {
+                            Image(systemName: icon)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 25, height: 25)
+                        }.buttonStyle(
+                            IconButtonStyle(
+                                selected: selectedIcon == icon,
+                                hovering: .init(get: { hoveringIcon == icon }, set: {
+                                    if $0 {
+                                        DispatchQueue.main.async {
+                                            hoveringIcon = icon
+                                        }
+                                    }
+                                })
+                            )
+                        )
                     }
                 }
-
             }
         }
+        .contentShape(Rectangle())
+        .onHover {
+            if !$0 {
+                hoveringIcon = nil
+            }
+        }
+        .padding(.horizontal, -10)
+    }
+}
+
+struct IconButtonStyle: ButtonStyle {
+    let selected: Bool
+    @Binding var hovering: Bool
+
+    struct Content<Icon: View>: View {
+        let icon: Icon
+        let selected: Bool
+        let isPressed: Bool
+        @Binding var hovering: Bool
+        @Environment(\.colorScheme) var colorScheme
+        @ViewBuilder var background: some View {
+            if selected {
+                Color.accentColor
+                    .brightness(isPressed ? -0.1 : 0)
+            } else if hovering {
+                Color.secondary
+                    .opacity(isPressed ? 0.4 : 0.25)
+            }
+        }
+        var foreground: Color {
+            if colorScheme == .dark || selected {
+                return .white
+            }
+            return .black
+        }
+        var body: some View {
+            icon
+                .foregroundColor(foreground)
+                .padding(5)
+                .background(
+                    background
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                )
+                .padding(4)
+                .onHover { hovering = $0 }
+        }
+    }
+    func makeBody(configuration: Configuration) -> some View {
+        Content(icon: configuration.label, selected: selected, isPressed: configuration.isPressed, hovering: $hovering)
     }
 }
 
@@ -94,6 +142,26 @@ struct IconPickerView_Previews: PreviewProvider {
         }
     }
     static var previews: some View {
-        TestView()
+        let icon = Image(systemName: "star.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 25, height: 25)
+
+        let buttonPreview = VStack {
+            HStack {
+                IconButtonStyle.Content(icon: icon, selected: false, isPressed: false, hovering: .constant(false))
+                IconButtonStyle.Content(icon: icon, selected: false, isPressed: false, hovering: .constant(true))
+                IconButtonStyle.Content(icon: icon, selected: false, isPressed: true, hovering: .constant(true))
+            }
+            HStack {
+                IconButtonStyle.Content(icon: icon, selected: true, isPressed: false, hovering: .constant(false))
+                IconButtonStyle.Content(icon: icon, selected: true, isPressed: false, hovering: .constant(true))
+                IconButtonStyle.Content(icon: icon, selected: true, isPressed: true, hovering: .constant(true))
+            }
+        }.padding()
+
+        TestView().padding()
+        buttonPreview
+        buttonPreview.preferredColorScheme(.dark)
     }
 }
