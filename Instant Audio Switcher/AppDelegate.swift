@@ -24,6 +24,7 @@ extension Preferences.PaneIdentifier {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         devicesWC.contentViewController = NSHostingController(rootView: SettingsView())
+        devicesWC.window!.backgroundColor = NSColor.underPageBackgroundColor
         statusBar = StatusBarController {
             let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
             if let name = Defaults[.deviceName],
