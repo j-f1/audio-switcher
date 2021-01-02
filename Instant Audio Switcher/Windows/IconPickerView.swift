@@ -13,7 +13,6 @@ struct IconPickerView: View {
   @State var hoveringIcon: String?
   var body: some View {
     VStack(spacing: 0) {
-      Text(hoveringIcon ?? "None")
       ForEach(icons, id: \.self) { row in
         HStack(spacing: 0) {
           ForEach(row, id: \.self) { icon in

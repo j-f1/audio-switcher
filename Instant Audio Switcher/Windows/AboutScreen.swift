@@ -33,8 +33,12 @@ let dependencies = [
 class AboutScreenVC: NSHostingController<AnyView> {
   required init?(coder: NSCoder) {
     super.init(coder: coder, rootView: AnyView(
-      AboutScreen(copyrightYear: "2020–2021", dependencies: dependencies, dependenciesScroll: false)
-        .frame(width: 400)
+      AboutScreen(
+        copyrightYear: "2020–2021",
+        dependencies: dependencies,
+        dependenciesScroll: false,
+        icon: "App Icon"
+      ).frame(width: 400)
     ))
   }
 }
