@@ -9,8 +9,6 @@ import SwiftUI
 
 struct IconPickerView: View {
   @Binding var selectedIcon: String
-  // work around some weirdness where the hover state doesn’t get cleared
-  @State var hoveringIcon: String?
   var body: some View {
     VStack(spacing: 0) {
       ForEach(icons, id: \.self) { row in
@@ -21,43 +19,29 @@ struct IconPickerView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 25, height: 25)
-            }.buttonStyle(
-              IconButtonStyle(
-                selected: selectedIcon == icon,
-                hovering: .init(get: { hoveringIcon == icon }, set: {
-                  if $0 {
-                    DispatchQueue.main.async {
-                      hoveringIcon = icon
-                    }
-                  }
-                })
-              )
-            )
+            }.buttonStyle(IconButtonStyle(selected: selectedIcon == icon))
           }
         }
       }
     }
     .contentShape(Rectangle())
-    .onHover { if !$0 { hoveringIcon = nil } }
     .padding(-4)
   }
 }
 
 struct IconButtonStyle: ButtonStyle {
   let selected: Bool
-  @Binding var hovering: Bool
-  
+
   struct Content<Icon: View>: View {
     let icon: Icon
     let selected: Bool
     let isPressed: Bool
-    @Binding var hovering: Bool
     @Environment(\.colorScheme) var colorScheme
     @ViewBuilder var background: some View {
       if selected {
-      } else if hovering {
-        Color.secondary.opacity(isPressed ? 0.4 : 0.25)
         Color(NSColor.selectedContentBackgroundColor).brightness(isPressed ? -0.1 : 0)
+      } else if isPressed {
+        Color.secondary.opacity(0.4)
       }
     }
 
@@ -74,11 +58,10 @@ struct IconButtonStyle: ButtonStyle {
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         )
         .padding(4)
-        .onHover { hovering = $0 }
     }
   }
   func makeBody(configuration: Configuration) -> some View {
-    Content(icon: configuration.label, selected: selected, isPressed: configuration.isPressed, hovering: $hovering)
+    Content(icon: configuration.label, selected: selected, isPressed: configuration.isPressed)
   }
 }
 
@@ -141,14 +124,14 @@ struct IconPickerView_Previews: PreviewProvider {
     
     let buttonPreview = VStack {
       HStack {
-        IconButtonStyle.Content(icon: icon, selected: false, isPressed: false, hovering: .constant(false))
-        IconButtonStyle.Content(icon: icon, selected: false, isPressed: false, hovering: .constant(true))
-        IconButtonStyle.Content(icon: icon, selected: false, isPressed: true, hovering: .constant(true))
+        IconButtonStyle.Content(icon: icon, selected: false, isPressed: false)
+        IconButtonStyle.Content(icon: icon, selected: false, isPressed: false)
+        IconButtonStyle.Content(icon: icon, selected: false, isPressed: true)
       }
       HStack {
-        IconButtonStyle.Content(icon: icon, selected: true, isPressed: false, hovering: .constant(false))
-        IconButtonStyle.Content(icon: icon, selected: true, isPressed: false, hovering: .constant(true))
-        IconButtonStyle.Content(icon: icon, selected: true, isPressed: true, hovering: .constant(true))
+        IconButtonStyle.Content(icon: icon, selected: true, isPressed: false)
+        IconButtonStyle.Content(icon: icon, selected: true, isPressed: false)
+        IconButtonStyle.Content(icon: icon, selected: true, isPressed: true)
       }
     }.padding()
     
