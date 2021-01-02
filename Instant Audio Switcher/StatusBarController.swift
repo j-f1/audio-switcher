@@ -38,7 +38,10 @@ class StatusBarController {
         let shouldActivate = Defaults[.clickToActivate] ? !override : override
 
         if shouldActivate && (event.type == .leftMouseUp || event.type == .rightMouseUp) {
-//            selectNextLayout()
+            if let name = Defaults[.deviceName],
+               let device = Device.named(name) {
+                device.activate(for: .output)
+            }
         } else if !shouldActivate {
             self.menu.replaceItems(with: items)
             statusItem.popUpMenu(menu)
