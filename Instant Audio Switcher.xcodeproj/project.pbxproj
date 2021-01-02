@@ -125,6 +125,7 @@
 				85BB532B259D1F2A00F0AC19 /* Sources */,
 				85BB532C259D1F2A00F0AC19 /* Frameworks */,
 				85BB532D259D1F2A00F0AC19 /* Resources */,
+				850AB8CC25A12C8500E14EB9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -191,6 +192,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		850AB8CC25A12C8500E14EB9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		85BB532B259D1F2A00F0AC19 /* Sources */ = {
