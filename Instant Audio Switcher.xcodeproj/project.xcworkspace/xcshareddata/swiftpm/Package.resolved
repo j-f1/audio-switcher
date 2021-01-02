@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/j-f1/AboutScreen.git",
         "state": {
           "branch": null,
-          "revision": "72582a373dcb23b286cd3547f701ee84cb60e815",
-          "version": "1.5.7"
+          "revision": "06c1f027e3a547fa24dc1fe919ebba0ed1c52ebc",
+          "version": "1.5.8"
         }
       },
       {
@@ -35,6 +35,15 @@
           "branch": null,
           "revision": "f4896e0090d3e1ad1f541cceef67f521baa08b07",
           "version": "1.2.0"
+        }
+      },
+      {
+        "package": "LaunchAtLogin",
+        "repositoryURL": "https://github.com/sindresorhus/LaunchAtLogin",
+        "state": {
+          "branch": null,
+          "revision": "0f39982b9d6993eef253b81219d3c39ba1e680f3",
+          "version": "4.0.0"
         }
       },
       {

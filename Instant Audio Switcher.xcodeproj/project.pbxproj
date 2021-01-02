@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8B925A11AA600E14EB9 /* AboutScreen */; };
+		850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8C425A120AF00E14EB9 /* LaunchAtLogin */; };
 		85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */; };
 		85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5336259D1F2C00F0AC19 /* Assets.xcassets */; };
 		85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5339259D1F2C00F0AC19 /* Preview Assets.xcassets */; };
@@ -51,6 +52,7 @@
 			files = (
 				85C4DCF2259D7A07005FF96F /* Defaults in Frameworks */,
 				850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */,
+				850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */,
 				85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +135,7 @@
 				85C4DCF1259D7A07005FF96F /* Defaults */,
 				85F1D0D5259E6AA9001831C0 /* MenuBuilder */,
 				850AB8B925A11AA600E14EB9 /* AboutScreen */,
+				850AB8C425A120AF00E14EB9 /* LaunchAtLogin */,
 			);
 			productName = "Instant Audio Switcher";
 			productReference = 85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */;
@@ -165,6 +168,7 @@
 				85C4DCF0259D7A07005FF96F /* XCRemoteSwiftPackageReference "Defaults" */,
 				85F1D0D4259E6AA9001831C0 /* XCRemoteSwiftPackageReference "MenuBuilder" */,
 				850AB8B825A11AA600E14EB9 /* XCRemoteSwiftPackageReference "AboutScreen" */,
+				850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 85BB5330259D1F2A00F0AC19 /* Products */;
 			projectDirPath = "";
@@ -400,7 +404,15 @@
 			repositoryURL = "https://github.com/j-f1/AboutScreen.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.7;
+				minimumVersion = 1.5.8;
+			};
+		};
+		850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 		85C4DCF0259D7A07005FF96F /* XCRemoteSwiftPackageReference "Defaults" */ = {
@@ -426,6 +438,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 850AB8B825A11AA600E14EB9 /* XCRemoteSwiftPackageReference "AboutScreen" */;
 			productName = AboutScreen;
+		};
+		850AB8C425A120AF00E14EB9 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 		85C4DCF1259D7A07005FF96F /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;

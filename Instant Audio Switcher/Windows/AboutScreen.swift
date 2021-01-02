@@ -29,6 +29,14 @@ let dependencies = [
       + Text("NSMenuItem").font(.system(.body, design: .monospaced))
       + Text("s")
   ),
+  Dependency(
+    "Defaults",
+    url: "https://github.com/sindresorhus/LaunchAtLogin",
+    version: "4.0.0",
+    license: .mit,
+    licenseURL: "https://github.com/sindresorhus/LaunchAtLogin/blob/4.0.0/license",
+    description: "Add “Launch at Login” functionality to your macOS app in seconds"
+  ),
 ]
 
 class AboutScreenVC: NSHostingController<AnyView> {

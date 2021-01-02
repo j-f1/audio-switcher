@@ -39,7 +39,7 @@ struct IconPickerView: View {
     }
     .contentShape(Rectangle())
     .onHover { if !$0 { hoveringIcon = nil } }
-    .padding(.horizontal, -10)
+    .padding(-4)
   }
 }
 
@@ -55,9 +55,9 @@ struct IconButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) var colorScheme
     @ViewBuilder var background: some View {
       if selected {
-        Color.accentColor.brightness(isPressed ? -0.1 : 0)
       } else if hovering {
         Color.secondary.opacity(isPressed ? 0.4 : 0.25)
+        Color(NSColor.selectedContentBackgroundColor).brightness(isPressed ? -0.1 : 0)
       }
     }
 

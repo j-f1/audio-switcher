@@ -56,6 +56,12 @@ import MenuBuilder
     
     Defaults.observe(.showInDock, options: [.initial]) { _ in
       NSApp.setActivationPolicy(Defaults[.showInDock] ? .regular : .accessory)
+      if self.prefsWC.window!.isVisible {
+        DispatchQueue.main.async {
+          self.prefsWC.open()
+          self.prefsWC.window!.makeKey()
+        }
+      }
     }.tieToLifetime(of: self)
   }
   
