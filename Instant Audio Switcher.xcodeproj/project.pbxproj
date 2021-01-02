@@ -56,6 +56,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		856D242225A0EA7300D89DAE /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				85F1D0E6259F8B19001831C0 /* SettingsView.swift */,
+				85F1D0E3259F863D001831C0 /* IconPickerView.swift */,
+				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
+				85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */,
+				85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
 		85BB5326259D1F2A00F0AC19 = {
 			isa = PBXGroup;
 			children = (
@@ -75,15 +87,11 @@
 		85BB5331259D1F2A00F0AC19 /* Instant Audio Switcher */ = {
 			isa = PBXGroup;
 			children = (
-				85F1D0E6259F8B19001831C0 /* SettingsView.swift */,
-				85F1D0E3259F863D001831C0 /* IconPickerView.swift */,
 				85C4DCF7259E04EE005FF96F /* StatusBarController.swift */,
-				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
 				85C4DCFA259E07EF005FF96F /* Defaults.swift */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
-				85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */,
-				85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
+				856D242225A0EA7300D89DAE /* Windows */,
 				85F1D0DC259E754D001831C0 /* Main.storyboard */,
 				85BB5336259D1F2C00F0AC19 /* Assets.xcassets */,
 				85BB533B259D1F2C00F0AC19 /* Info.plist */,

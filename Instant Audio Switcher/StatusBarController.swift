@@ -25,7 +25,6 @@ class StatusBarController {
     statusItem.button!.target = self
     statusItem.button!.action = #selector(onClick)
     statusItem.button!.sendAction(on: [.rightMouseUp, .leftMouseUp, .rightMouseDown, .leftMouseDown])
-    statusItem.button!.imagePosition = .imageOnly
   }
   
   @objc func onClick() {
