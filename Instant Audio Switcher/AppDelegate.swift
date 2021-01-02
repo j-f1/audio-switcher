@@ -61,6 +61,6 @@ extension Preferences.PaneIdentifier {
     }
 
     func applicationDidResignActive(_ notification: Notification) {
-        devicesWC.window?.setIsVisible(false)
+        devicesWC.window?.close()
     }
 }

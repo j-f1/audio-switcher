@@ -21,7 +21,7 @@ struct IconPickerView: View {
                                 let img = Image(systemName: icon)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 25, height: 25)
                                     .padding(5)
                                 if selectedIcon == icon {
                                     img.background(

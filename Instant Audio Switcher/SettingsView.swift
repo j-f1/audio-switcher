@@ -19,11 +19,14 @@ struct SettingsView: View {
         VStack(alignment: .leading) {
             Text("General").font(.headline)
             Toggle("Show in Dock", isOn: $showInDock).padding(.vertical, 5)
-            Toggle("Click menu item to activate", isOn: $clickToActivate)
-            Text("When enabled, click the \(Image(systemName: selectedIcon)) icon in the menu bar to switch to “\(selectedDevice ?? "<unknown device>")\u{202d}.” Option-click, control-click, or right-click the menu item to open the menu and change your settings.")
-                .foregroundColor(.secondary)
-                .padding(.leading, 20)
-                .imageScale(.small)
+            Toggle(isOn: $clickToActivate) {
+                VStack(alignment: .leading) {
+                    Text("Click menu item to activate “\(selectedDevice ?? "")\u{202d}”")
+                    Text("When enabled, click the \(Image(systemName: selectedIcon)) icon in the menu bar to send music, videos, and sounds to “\(selectedDevice ?? "<unknown device>")\u{202d}.” Option-click, control-click, or right-click the menu item to open the menu and change your settings.")
+                        .foregroundColor(.secondary)
+                        .imageScale(.small)
+                }
+            }
 
             Divider().padding(.vertical, 8)
             Text("Device to Activate").font(.headline)
@@ -34,7 +37,7 @@ struct SettingsView: View {
             IconPickerView(selectedIcon: $selectedIcon)
         }
         .padding()
-        .frame(width: 328)
+        .frame(width: 368)
         .fixedSize(horizontal: false, vertical: true)
     }
 }
