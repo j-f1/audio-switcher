@@ -11,7 +11,6 @@
 		85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5336259D1F2C00F0AC19 /* Assets.xcassets */; };
 		85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5339259D1F2C00F0AC19 /* Preview Assets.xcassets */; };
 		85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */; };
-		85BB5347259D1FF400F0AC19 /* switchaudio-osx in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5346259D1FF400F0AC19 /* switchaudio-osx */; };
 		85C4DCF2259D7A07005FF96F /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 85C4DCF1259D7A07005FF96F /* Defaults */; };
 		85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF4259E0405005FF96F /* AppDelegate.swift */; };
 		85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF7259E04EE005FF96F /* StatusBarController.swift */; };
@@ -31,7 +30,6 @@
 		85BB533B259D1F2C00F0AC19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85BB533C259D1F2C00F0AC19 /* Instant_Audio_Switcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Instant_Audio_Switcher.entitlements; sourceTree = "<group>"; };
 		85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSwitch.swift; sourceTree = "<group>"; };
-		85BB5346259D1FF400F0AC19 /* switchaudio-osx */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "switchaudio-osx"; sourceTree = "<group>"; };
 		85C4DCF4259E0405005FF96F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85C4DCF7259E04EE005FF96F /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		85C4DCFA259E07EF005FF96F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
 				85F1D0DC259E754D001831C0 /* Main.storyboard */,
-				85BB5346259D1FF400F0AC19 /* switchaudio-osx */,
 				85BB5336259D1F2C00F0AC19 /* Assets.xcassets */,
 				85BB533B259D1F2C00F0AC19 /* Info.plist */,
 				85BB533C259D1F2C00F0AC19 /* Instant_Audio_Switcher.entitlements */,
@@ -167,7 +164,6 @@
 			files = (
 				85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */,
 				85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */,
-				85BB5347259D1FF400F0AC19 /* switchaudio-osx in Resources */,
 				85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
