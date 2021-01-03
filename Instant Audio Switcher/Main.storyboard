@@ -21,7 +21,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="bIR-t4-UZ4"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WBX-VM-65a"/>
-                                        <menuItem title="Quit Input Sources" keyEquivalent="q" id="kfo-BA-Zv8">
+                                        <menuItem title="Quit Instant Audio Switcher" keyEquivalent="q" id="kfo-BA-Zv8">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="tYZ-Wg-RcO"/>
                                             </connections>
