@@ -10,6 +10,7 @@ import Defaults
 import SwiftUI
 import MenuBuilder
 import AVFoundation
+import UserNotifications
 
 extension DispatchTimeInterval: Comparable {
   var nanoseconds: Int64? {
@@ -39,7 +40,12 @@ extension DispatchTimeInterval: Comparable {
   }
 }
 
-class StatusBarController {
+enum NotificationIdentifier {
+  static let retryAction = "RetryAction"
+  static let failureCategory = "connectionFailure"
+}
+
+class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
   private var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   private var menu = NSMenu()
   private var items: () -> [NSMenuItem?]
@@ -49,11 +55,27 @@ class StatusBarController {
     return try? AVAudioPlayer(contentsOf: url)
   }()
 
+  let center: UNUserNotificationCenter = {
+    let center = UNUserNotificationCenter.current()
+    let notificationCategory = UNNotificationCategory(
+      identifier: NotificationIdentifier.failureCategory,
+      actions: [
+        UNNotificationAction(identifier: NotificationIdentifier.retryAction, title: "Try Again", options: [])
+      ],
+      intentIdentifiers: []
+    )
+    center.setNotificationCategories([notificationCategory])
+    return center
+  }()
+
+
   func activateDevice() {
     if let name = Defaults[.deviceName],
        let device = Device.named(name) {
       device.activate(for: .output)
       checkActivation(of: device)
+    } else {
+      reportActivationFailure()
     }
   }
 
@@ -64,17 +86,59 @@ class StatusBarController {
       audioPlayer?.currentTime = 0
       self.audioPlayer?.play()
     } else if start.distance(to: .now()) > .seconds(5) {
-      print("FALURE")
+      reportActivationFailure()
     } else {
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(50)) {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
         self.checkActivation(of: device, start: start)
       }
     }
   }
 
+  func reportActivationFailure() {
+    let name = Defaults[.deviceName] ?? "<unknown>"
+    center.requestAuthorization(options: [.alert]) { (granted, err) in
+      if let err = err {
+        print(err)
+      }
+      if granted {
+        let content = UNMutableNotificationContent()
+        content.title = "Failed to activate \(name)"
+        if Device.named(name) == nil {
+          content.body = "No device with that name is currently available."
+        }
+        content.categoryIdentifier = NotificationIdentifier.failureCategory
+        let notif = UNNotificationRequest(identifier: "failure-\(name)", content: content, trigger: nil)
+        self.center.add(notif) { (err) in
+          if let err = err {
+            print(err)
+          }
+        }
+      }
+    }
+  }
+
+  func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    completionHandler([.banner])
+  }
+
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    switch response.actionIdentifier {
+    case UNNotificationDefaultActionIdentifier:
+      // User tapped on message itself rather than on an Action button
+      return
+    case NotificationIdentifier.retryAction:
+      activateDevice()
+    default:
+      break
+    }
+    completionHandler()
+  }
+
   init(@MenuBuilder items: @escaping () -> [NSMenuItem?]) {
     self.items = items
-    
+    super.init()
+    center.delegate = self
+
     Defaults.observe(keys: .iconName, options: [.initial]) { [weak self] in
       self?.statusItem.button?.image = NSImage(systemSymbolName: Defaults[.iconName], accessibilityDescription: nil)!
     }.tieToLifetime(of: self)
