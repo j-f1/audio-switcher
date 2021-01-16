@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8B925A11AA600E14EB9 /* AboutScreen */; };
 		850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8C425A120AF00E14EB9 /* LaunchAtLogin */; };
+		85A011F725B28A3300F0A5B4 /* sound-effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 85A011F625B28A3300F0A5B4 /* sound-effect.wav */; };
 		85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */; };
 		85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5336259D1F2C00F0AC19 /* Assets.xcassets */; };
 		85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5339259D1F2C00F0AC19 /* Preview Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		850AB8B525A118A000E14EB9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		850AB8BD25A11CB900E14EB9 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		85A011F625B28A3300F0A5B4 /* sound-effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sound-effect.wav"; sourceTree = SOURCE_ROOT; };
 		85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Audio Switcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePickerView.swift; sourceTree = "<group>"; };
 		85BB5336259D1F2C00F0AC19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				85BB5331259D1F2A00F0AC19 /* Instant Audio Switcher */,
 				85BB5330259D1F2A00F0AC19 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
 		};
 		85BB5330259D1F2A00F0AC19 /* Products */ = {
@@ -95,6 +98,7 @@
 			children = (
 				85C4DCF7259E04EE005FF96F /* StatusBarController.swift */,
 				85C4DCFA259E07EF005FF96F /* Defaults.swift */,
+				85A011F625B28A3300F0A5B4 /* sound-effect.wav */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
 				856D242225A0EA7300D89DAE /* Windows */,
@@ -188,6 +192,7 @@
 				85BB533A259D1F2C00F0AC19 /* Preview Assets.xcassets in Resources */,
 				85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */,
 				85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */,
+				85A011F725B28A3300F0A5B4 /* sound-effect.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

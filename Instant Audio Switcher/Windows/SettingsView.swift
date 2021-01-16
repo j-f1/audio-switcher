@@ -12,7 +12,8 @@ import LaunchAtLogin
 struct SettingsView: View {
   @Default(.showInDock) var showInDock
   @Default(.clickToActivate) var clickToActivate
-  
+  @Default(.playSound) var playSound
+
   @Default(.deviceName) var selectedDevice
   @Default(.iconName) var selectedIcon
   
@@ -20,6 +21,7 @@ struct SettingsView: View {
     VStack(alignment: .leading) {
       Text("General").font(.headline)
       Toggle("Show in Dock", isOn: $showInDock)
+      Toggle("Play sound after connecting", isOn: $playSound)
       LaunchAtLogin.Toggle()
       Toggle(isOn: $clickToActivate) {
         VStack(alignment: .leading, spacing: 2) {
@@ -41,14 +43,18 @@ struct SettingsView: View {
            .fixedSize(horizontal: false, vertical: true)
         }
       }
-      
-      Divider().padding(.vertical, 8)
-      Text("Device to Activate").font(.headline)
-      DevicePickerView(selectedDevice: $selectedDevice)
-      
-      Divider().padding(.vertical, 8)
-      Text("Menu Bar Icon").font(.headline)
-      IconPickerView(selectedIcon: $selectedIcon)
+
+      Group {
+        Divider().padding(.vertical, 8)
+        Text("Device to Activate").font(.headline)
+        DevicePickerView(selectedDevice: $selectedDevice)
+      }
+
+      Group {
+        Divider().padding(.vertical, 8)
+        Text("Menu Bar Icon").font(.headline)
+        IconPickerView(selectedIcon: $selectedIcon)
+      }
     }
     .padding(16)
     .frame(width: 368)

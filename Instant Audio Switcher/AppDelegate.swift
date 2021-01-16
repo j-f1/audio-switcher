@@ -13,7 +13,7 @@ import MenuBuilder
 
 @NSApplicationMain
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
-  var statusBar: StatusBarController?
+  var statusBar: StatusBarController!
   let prefsWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "PrefsWindow")
   #if canImport(AboutScreen)
   let aboutWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "AboutWindow")
@@ -25,11 +25,9 @@ import MenuBuilder
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
       if let name = Defaults[.deviceName],
-         let device = Device.named(name) {
+         let _ = Device.named(name) {
         MenuItem("Activate \(name)")
-          .onSelect {
-            device.activate(for: .output)
-          }
+          .onSelect { self.statusBar.activateDevice() }
         SeparatorItem()
       }
       MenuItem("Preferences")
