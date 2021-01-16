@@ -79,7 +79,7 @@
 			children = (
 				850AB8B525A118A000E14EB9 /* README.md */,
 				850AB8BD25A11CB900E14EB9 /* LICENSE */,
-				85BB5331259D1F2A00F0AC19 /* Instant Audio Switcher */,
+				85BB5331259D1F2A00F0AC19 /* audio-switcher */,
 				85BB5330259D1F2A00F0AC19 /* Products */,
 			);
 			indentWidth = 2;
@@ -93,7 +93,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		85BB5331259D1F2A00F0AC19 /* Instant Audio Switcher */ = {
+		85BB5331259D1F2A00F0AC19 /* audio-switcher */ = {
 			isa = PBXGroup;
 			children = (
 				85C4DCF7259E04EE005FF96F /* StatusBarController.swift */,
@@ -108,7 +108,7 @@
 				85BB533C259D1F2C00F0AC19 /* Instant_Audio_Switcher.entitlements */,
 				85BB5338259D1F2C00F0AC19 /* Preview Content */,
 			);
-			path = "Instant Audio Switcher";
+			path = "audio-switcher";
 			sourceTree = "<group>";
 		};
 		85BB5338259D1F2C00F0AC19 /* Preview Content */ = {
