@@ -24,14 +24,19 @@ import MenuBuilder
     prefsWC.window!.backgroundColor = NSColor.underPageBackgroundColor
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
-      if let name = Defaults[.deviceName],
-         let device = Device.named(name) {
-        let isActive = Device.selected(for: .output) == device
-        MenuItem("Activate \(name)")
-          .state(isActive ? .on : .off)
-          .onSelect { self.statusBar.activateDevice() }
-        SeparatorItem()
+      if let name = Defaults[.deviceName] {
+        if let device = Device.named(name) {
+          let isActive = Device.selected(for: .output) == device
+          MenuItem("Activate \(name)")
+            .state(isActive ? .on : .off)
+            .onSelect { self.statusBar.activateDevice() }
+        } else {
+          MenuItem("“\(name)\u{200d}” is not available")
+        }
+      } else {
+        MenuItem("Choose a device to activate in Preferences")
       }
+      SeparatorItem()
       MenuItem("Preferences")
         .shortcut(",")
         .onSelect {

@@ -10,10 +10,10 @@ import Defaults
 import LaunchAtLogin
 
 let openMenuText = Text("open the menu and change your settings.")
-let setOutputText = { (name: String?) in Text("send music, videos, and sounds to “\(name ?? "<unknown device>")\u{202d}.”") }
+let setOutputText = { (name: String?) in Text("send music, videos, and sounds to “\(name ?? "<choose device>")\u{202d}.”") }
 
 let clickIconToText = { (icon: String) in Text("Click the ") + Text(Image(systemName: icon)) + Text(" icon in the menu bar to ") }
-let altClickIconToText = Text("Option-click, control-click, or right-click the menu item to ")
+let altClickIconToText = { (icon: String) in Text("Option-click, control-click, or right-click the ") + Text(Image(systemName: icon)) + Text(" icon to ") }
 
 struct SettingsView: View {
   @Default(.showInDock) var showInDock
@@ -33,7 +33,7 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 5) {
           HStack(spacing: 0) {
             Text("Click menu item to activate “").fixedSize()
-            Text(selectedDevice ?? "")
+            Text(selectedDevice ?? "<choose device>")
               .lineLimit(1)
               .truncationMode(.tail)
             Text("”").fixedSize()
@@ -41,11 +41,11 @@ struct SettingsView: View {
           ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 5) {
               clickIconToText(selectedIcon) + setOutputText(selectedDevice)
-              altClickIconToText + openMenuText
+              altClickIconToText(selectedIcon) + openMenuText
             }.opacity(clickToActivate ? 1 : 0)
             VStack(alignment: .leading, spacing: 5) {
               clickIconToText(selectedIcon) + openMenuText
-              altClickIconToText + setOutputText(selectedDevice)
+              altClickIconToText(selectedIcon) + setOutputText(selectedDevice)
             }.opacity(clickToActivate ? 0 : 1)
           }.foregroundColor(.secondary)
            .imageScale(.small)

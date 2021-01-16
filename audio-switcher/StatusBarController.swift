@@ -48,7 +48,7 @@ enum NotificationIdentifier {
 class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
   private var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   private var menu = NSMenu()
-  private var items: () -> [NSMenuItem?]
+  private var items: () -> [NSMenuItem]
 
   lazy var audioPlayer: AVAudioPlayer? = {
     guard let url = Bundle.main.url(forResource: "sound-effect", withExtension: "wav") else { return nil }
@@ -136,7 +136,7 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     completionHandler()
   }
 
-  init(@MenuBuilder items: @escaping () -> [NSMenuItem?]) {
+  init(@MenuBuilder items: @escaping () -> [NSMenuItem]) {
     self.items = items
     super.init()
     center.delegate = self
