@@ -11,6 +11,34 @@ import SwiftUI
 import MenuBuilder
 import AVFoundation
 
+extension DispatchTimeInterval: Comparable {
+  var nanoseconds: Int64? {
+    switch self {
+    case .seconds(let s): return Int64(s) * 1_000_000_000
+    case .milliseconds(let ms): return Int64(ms) * 1_000_000
+    case .microseconds(let μs): return Int64(μs) * 1_000
+    case .nanoseconds(let ns): return Int64(ns)
+    case .never: return nil
+    @unknown default: return nil
+    }
+  }
+
+  public static func < (_ lhs: DispatchTimeInterval, rhs: DispatchTimeInterval) -> Bool {
+    if let lhs = lhs.nanoseconds,
+       let rhs = rhs.nanoseconds {
+      return lhs < rhs
+    }
+    return false
+  }
+  public static func > (_ lhs: DispatchTimeInterval, rhs: DispatchTimeInterval) -> Bool {
+    if let lhs = lhs.nanoseconds,
+       let rhs = rhs.nanoseconds {
+      return lhs > rhs
+    }
+    return false
+  }
+}
+
 class StatusBarController {
   private var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   private var menu = NSMenu()
@@ -24,14 +52,26 @@ class StatusBarController {
   func activateDevice() {
     if let name = Defaults[.deviceName],
        let device = Device.named(name) {
-      audioPlayer?.prepareToPlay()
       device.activate(for: .output)
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-        self.audioPlayer?.play()
+      checkActivation(of: device)
+    }
+  }
+
+  func checkActivation(of device: Device, start: DispatchTime = .now()) {
+    if Device.selected(for: .output) == device {
+      print("ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
+      self.audioPlayer?.pause()
+      audioPlayer?.currentTime = 0
+      self.audioPlayer?.play()
+    } else if start.distance(to: .now()) > .seconds(5) {
+      print("FALURE")
+    } else {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(50)) {
+        self.checkActivation(of: device, start: start)
       }
     }
   }
-  
+
   init(@MenuBuilder items: @escaping () -> [NSMenuItem?]) {
     self.items = items
     
