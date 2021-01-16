@@ -72,14 +72,16 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
   func activateDevice() {
     if let name = Defaults[.deviceName],
        let device = Device.named(name) {
-      device.activate(for: .output)
-      checkActivation(of: device)
+      DispatchQueue.global(qos: .userInitiated).async {
+        self.checkActivation(of: device)
+      }
     } else {
       reportActivationFailure()
     }
   }
 
   func checkActivation(of device: Device, start: DispatchTime = .now()) {
+    device.activate(for: .output)
     if Device.selected(for: .output) == device {
       print("ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
       self.audioPlayer?.pause()
@@ -88,7 +90,7 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     } else if start.distance(to: .now()) > .seconds(5) {
       reportActivationFailure()
     } else {
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+      DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .milliseconds(100)) {
         self.checkActivation(of: device, start: start)
       }
     }
