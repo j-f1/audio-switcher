@@ -40,7 +40,7 @@ public struct DevicePickerView: View {
           Text(device.name!).tag(device.name!)
         }
       }
-      .cornerRadius(5)
+      .cornerRadius(9)
       .frame(minHeight: 100)
     }
   }
