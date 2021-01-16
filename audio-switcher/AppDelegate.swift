@@ -25,8 +25,10 @@ import MenuBuilder
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
       if let name = Defaults[.deviceName],
-         let _ = Device.named(name) {
+         let device = Device.named(name) {
+        let isActive = Device.selected(for: .output) == device
         MenuItem("Activate \(name)")
+          .state(isActive ? .on : .off)
           .onSelect { self.statusBar.activateDevice() }
         SeparatorItem()
       }
