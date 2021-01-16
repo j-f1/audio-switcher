@@ -358,20 +358,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Instant Audio Switcher/Instant_Audio_Switcher.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"Instant Audio Switcher/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"audio-switcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Instant Audio Switcher/Info.plist";
+				INFOPLIST_FILE = "audio-switcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -383,15 +384,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Instant Audio Switcher/Instant_Audio_Switcher.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"Instant Audio Switcher/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"audio-switcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Instant Audio Switcher/Info.plist";
+				INFOPLIST_FILE = "audio-switcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
