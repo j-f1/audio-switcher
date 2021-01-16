@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8B925A11AA600E14EB9 /* AboutScreen */; };
 		850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8C425A120AF00E14EB9 /* LaunchAtLogin */; };
+		856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 856853E525B371BE00D59E2C /* AudioChangeNotifier.m */; };
 		85A011F725B28A3300F0A5B4 /* sound-effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 85A011F625B28A3300F0A5B4 /* sound-effect.wav */; };
 		85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */; };
 		85BB5337259D1F2C00F0AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85BB5336259D1F2C00F0AC19 /* Assets.xcassets */; };
@@ -29,6 +30,9 @@
 /* Begin PBXFileReference section */
 		850AB8B525A118A000E14EB9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		850AB8BD25A11CB900E14EB9 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		856853E325B371BD00D59E2C /* Instant Audio Switcher-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Instant Audio Switcher-Bridging-Header.h"; sourceTree = "<group>"; };
+		856853E425B371BE00D59E2C /* AudioChangeNotifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioChangeNotifier.h; sourceTree = "<group>"; };
+		856853E525B371BE00D59E2C /* AudioChangeNotifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioChangeNotifier.m; sourceTree = "<group>"; };
 		85A011F625B28A3300F0A5B4 /* sound-effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sound-effect.wav"; sourceTree = SOURCE_ROOT; };
 		85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Audio Switcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePickerView.swift; sourceTree = "<group>"; };
@@ -101,12 +105,15 @@
 				85A011F625B28A3300F0A5B4 /* sound-effect.wav */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
+				856853E425B371BE00D59E2C /* AudioChangeNotifier.h */,
+				856853E525B371BE00D59E2C /* AudioChangeNotifier.m */,
 				856D242225A0EA7300D89DAE /* Windows */,
 				85F1D0DC259E754D001831C0 /* Main.storyboard */,
 				85BB5336259D1F2C00F0AC19 /* Assets.xcassets */,
 				85BB533B259D1F2C00F0AC19 /* Info.plist */,
 				85BB533C259D1F2C00F0AC19 /* Instant_Audio_Switcher.entitlements */,
 				85BB5338259D1F2C00F0AC19 /* Preview Content */,
+				856853E325B371BD00D59E2C /* Instant Audio Switcher-Bridging-Header.h */,
 			);
 			path = "audio-switcher";
 			sourceTree = "<group>";
@@ -157,6 +164,7 @@
 				TargetAttributes = {
 					85BB532E259D1F2A00F0AC19 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -231,6 +239,7 @@
 				85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */,
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
 				85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */,
+				856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */,
 				85F1D0F525A0D2C4001831C0 /* AboutScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -375,6 +385,8 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "audio-switcher/Instant Audio Switcher-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -384,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -400,6 +413,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "audio-switcher/Instant Audio Switcher-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

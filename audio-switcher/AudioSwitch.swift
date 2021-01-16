@@ -8,6 +8,7 @@
 
 import CoreServices
 import CoreAudio
+import Combine
 
 enum DeviceType {
   case input
@@ -55,6 +56,7 @@ class Device: Identifiable, Equatable, Hashable {
     _ = set(property: type.mSelector, in: .global, to: id)
   }
 }
+
 extension Device {
   static func selected(for type: DeviceType) -> Device? {
     guard let id = read(property: type.mSelector, defaultValue: AudioDeviceID(kAudioDeviceUnknown)) else { return nil }
@@ -182,7 +184,6 @@ func sizeOf(
   return nil
 }
 
-
 enum AudioObjectProperty {
   enum Scope: AudioObjectPropertyScope {
     case wildcard
@@ -204,3 +205,21 @@ enum AudioObjectProperty {
   }
 }
 
+class AudioDeviceList: ObservableObject {
+  @Published var devices: [Device]
+  private var onChange: AudioHardwarePropertyListener
+  init() {
+    self.devices = Device.named
+    self.onChange = { _ in noErr }
+    self.onChange = { [weak self] id in
+      DispatchQueue.main.async {
+        self?.devices = Device.named
+      }
+      return noErr
+    }
+    myAudioHardwareAddPropertyListener(kAudioHardwarePropertyDevices, onChange)
+  }
+  deinit {
+    myAudioHardwareRemovePropertyListener(kAudioHardwarePropertyDevices, onChange)
+  }
+}

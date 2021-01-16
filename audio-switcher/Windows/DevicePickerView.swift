@@ -10,7 +10,10 @@ import Defaults
 
 public struct DevicePickerView: View {
   @Binding var selectedDevice: String?
+
   @State var isCustomDevice: Bool
+  @StateObject var devices = AudioDeviceList()
+
   init(selectedDevice: Binding<String?>) {
     self._selectedDevice = selectedDevice
 
@@ -36,7 +39,7 @@ public struct DevicePickerView: View {
         .foregroundColor(.secondary)
     } else {
       List(selection: $selectedDevice) {
-        ForEach(Device.named) { device in
+        ForEach(devices.devices) { device in
           Text(device.name!).tag(device.name!)
         }
       }
