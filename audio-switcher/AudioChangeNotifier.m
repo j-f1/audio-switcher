@@ -21,10 +21,10 @@ OSStatus myAudioHardwareAddPropertyListener(AudioHardwarePropertyID         inPr
 OSStatus myAudioHardwareRemovePropertyListener(AudioHardwarePropertyID         inPropertyID,
                                                AudioHardwarePropertyListener   inProc) {
   count--;
+  CFBridgingRelease((__bridge CFTypeRef _Nullable)(inProc));
   if (count == 0) {
     return AudioHardwareRemovePropertyListener(inPropertyID, handle);
   } else {
-    CFBridgingRelease((__bridge CFTypeRef _Nullable)(inProc));
     return noErr;
   }
 }
