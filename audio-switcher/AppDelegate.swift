@@ -64,9 +64,11 @@ import MenuBuilder
   }
   
   func applicationDidResignActive(_ notification: Notification) {
-    prefsWC.window?.close()
-    #if canImport(AboutScreen)
-    aboutWC.window?.close()
-    #endif
+    if !Defaults[.showInDock] {
+      prefsWC.window?.close()
+      #if canImport(AboutScreen)
+      aboutWC.window?.close()
+      #endif
+    } 
   }
 }
