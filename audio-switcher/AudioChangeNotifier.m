@@ -15,13 +15,12 @@ OSStatus handle(AudioHardwarePropertyID property, void *ctx) {
 OSStatus myAudioHardwareAddPropertyListener(AudioHardwarePropertyID         inPropertyID,
                                             AudioHardwarePropertyListener   inProc) {
   count++;
-  return AudioHardwareAddPropertyListener(inPropertyID, handle, CFBridgingRetain(inProc));
+  return AudioHardwareAddPropertyListener(inPropertyID, handle, (__bridge void * _Nullable)(inProc));
 }
 
 OSStatus myAudioHardwareRemovePropertyListener(AudioHardwarePropertyID         inPropertyID,
                                                AudioHardwarePropertyListener   inProc) {
   count--;
-  CFBridgingRelease((__bridge CFTypeRef _Nullable)(inProc));
   if (count == 0) {
     return AudioHardwareRemovePropertyListener(inPropertyID, handle);
   } else {
