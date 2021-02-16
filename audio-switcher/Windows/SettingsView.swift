@@ -21,8 +21,16 @@ struct SettingsView: View {
   @Default(.playSound) var playSound
 
   @Default(.deviceName) var selectedDevice
+  @Default(.secondaryDeviceName) var secondarySelectedDevice
   @Default(.iconName) var selectedIcon
   
+  @State var secondDeviceEnabled: Bool
+
+  init() {
+    self._secondDeviceEnabled = .init(initialValue: false)
+    self._secondDeviceEnabled = .init(initialValue: secondarySelectedDevice != nil)
+  }
+
   var body: some View {
     VStack(alignment: .leading) {
       Text("General").font(.headline)
@@ -59,6 +67,19 @@ struct SettingsView: View {
         Text("Device to Activate").font(.headline)
         DevicePickerView(selectedDevice: $selectedDevice)
       }
+
+      Group {
+        Toggle(isOn: $secondDeviceEnabled) {
+          Text("Alternate with Second Device").font(.headline)
+        }.padding(.top, 8)
+        if secondDeviceEnabled {
+          DevicePickerView(selectedDevice: $secondarySelectedDevice)
+        }
+      }.onChange(of: secondDeviceEnabled, perform: { value in
+        if !value {
+          secondarySelectedDevice = nil
+        }
+      })
 
       Group {
         Divider().padding(.vertical, 8)

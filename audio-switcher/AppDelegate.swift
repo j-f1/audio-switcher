@@ -27,9 +27,25 @@ import MenuBuilder
       if let name = Defaults[.deviceName] {
         if let device = Device.named(name) {
           let isActive = Device.selected(for: .output) == device
-          MenuItem("Activate \(name)")
+          MenuItem("Active Device")
+            .view {
+              HStack {
+                Text("Active Device")
+                  .fontWeight(.semibold)
+                  .textCase(.uppercase)
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+                  .offset(x: 20)
+                Spacer()
+              }
+              .padding(5)
+            }
+          MenuItem("\(name)")
             .state(isActive ? .on : .off)
             .onSelect { self.statusBar.activateDevice() }
+          MenuItem("MacBook Pro Speakers")
+            .state(!isActive ? .on : .off)
+            .onSelect {}
         } else {
           MenuItem("“\(name)\u{200d}” is not available")
         }

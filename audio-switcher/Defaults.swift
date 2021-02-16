@@ -13,5 +13,6 @@ extension Defaults.Keys {
   static let playSound = Key<Bool>("playSound", default: false)
 
   static let deviceName = Key<String?>("deviceName")
+  static let secondaryDeviceName = Key<String?>("secondaryDeviceName")
   static let iconName = Key<String>("iconName", default: "sparkles")
 }
