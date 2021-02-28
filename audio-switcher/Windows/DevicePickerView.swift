@@ -12,7 +12,7 @@ public struct DevicePickerView: View {
   @Binding var selectedDevice: String?
 
   @State var isCustomDevice: Bool
-  @StateObject var devices = AudioDeviceList()
+  @ObservedObject var devices = AudioDeviceList.shared
 
   init(selectedDevice: Binding<String?>) {
     self._selectedDevice = selectedDevice
@@ -40,7 +40,9 @@ public struct DevicePickerView: View {
     } else {
       List(selection: $selectedDevice) {
         ForEach(devices.devices) { device in
-          Text(device.name!).tag(device.name!)
+          if let name = device.name {
+            Text(name).tag(name)
+          }
         }
       }
       .cornerRadius(9)

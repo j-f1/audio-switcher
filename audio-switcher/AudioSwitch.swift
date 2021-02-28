@@ -207,6 +207,7 @@ enum AudioObjectProperty {
 
 class AudioDeviceList: ObservableObject {
   @Published var devices: [Device]
+  static var shared = AudioDeviceList()
   private var onChange: AudioHardwarePropertyListener
   init() {
     self.devices = Device.named
