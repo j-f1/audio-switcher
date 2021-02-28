@@ -35,7 +35,7 @@ struct SettingsView: View {
   var body: some View {
     VStack(alignment: .leading) {
       Text("General").font(.headline)
-      Toggle("Show in Dock", isOn: $showInDock)
+      Toggle("Hide from Dock", isOn: .init(get: { !showInDock }, set: { showInDock = !$0 }))
       Toggle("Play sound after connecting", isOn: $playSound)
       LaunchAtLogin.Toggle()
       Toggle(isOn: $clickToActivate) {
