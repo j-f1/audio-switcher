@@ -15,7 +15,7 @@ OSStatus handle(AudioHardwarePropertyID property, void *ctx) {
 OSStatus myAudioHardwareAddPropertyListener(AudioHardwarePropertyID         inPropertyID,
                                             AudioHardwarePropertyListener   inProc) {
   count++;
-  return AudioHardwareAddPropertyListener(inPropertyID, handle, (__bridge void * _Nullable)(inProc));
+  return AudioHardwareAddPropertyListener(inPropertyID, handle, CFBridgingRetain(inProc));
 }
 
 OSStatus myAudioHardwareRemovePropertyListener(AudioHardwarePropertyID         inPropertyID,
