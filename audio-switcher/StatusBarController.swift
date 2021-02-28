@@ -69,14 +69,13 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
   }()
 
 
-  func activateDevice() {
-    if let name = Defaults[.deviceName],
-       let device = Device.named(name) {
+  func activateDevice(named name: String) {
+    if let device = Device.named(name) {
       DispatchQueue.global(qos: .userInitiated).async {
         self.checkActivation(of: device)
       }
     } else {
-      reportActivationFailure()
+      reportActivationFailure(for: name)
     }
   }
 
@@ -88,7 +87,7 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
       audioPlayer?.currentTime = 0
       self.audioPlayer?.play()
     } else if start.distance(to: .now()) > .seconds(5) {
-      reportActivationFailure()
+      reportActivationFailure(for: device.name)
     } else {
       DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .milliseconds(100)) {
         self.checkActivation(of: device, start: start)
@@ -96,20 +95,19 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     }
   }
 
-  func reportActivationFailure() {
-    let name = Defaults[.deviceName] ?? "<unknown>"
+  func reportActivationFailure(for name: String?) {
     center.requestAuthorization(options: [.alert]) { (granted, err) in
       if let err = err {
         print(err)
       }
       if granted {
         let content = UNMutableNotificationContent()
-        content.title = "Failed to activate \(name)"
-        if Device.named(name) == nil {
+        content.title = "Failed to activate \(name ?? "<unknown>")"
+        if let name = name, Device.named(name) == nil {
           content.body = "No device with that name is currently available."
         }
         content.categoryIdentifier = NotificationIdentifier.failureCategory
-        let notif = UNNotificationRequest(identifier: "failure-\(name)", content: content, trigger: nil)
+        let notif = UNNotificationRequest(identifier: name ?? "<unknown>", content: content, trigger: nil)
         self.center.add(notif) { (err) in
           if let err = err {
             print(err)
@@ -127,9 +125,9 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     switch response.actionIdentifier {
     case UNNotificationDefaultActionIdentifier:
       // User tapped on message itself rather than on an Action button
-      return
+      break
     case NotificationIdentifier.retryAction:
-      activateDevice()
+      activateDevice(named: response.notification.request.identifier)
     default:
       break
     }
@@ -160,7 +158,16 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     let shouldActivate = Defaults[.clickToActivate] ? !override : override
     
     if shouldActivate && (event.type == .leftMouseUp || event.type == .rightMouseUp) {
-      activateDevice()
+      if let primaryDevice = Defaults[.deviceName] {
+        if let secondaryDevice = Defaults[.secondaryDeviceName],
+           primaryDevice == Device.selected(for: .output)?.name {
+          activateDevice(named: secondaryDevice)
+        } else {
+          activateDevice(named: primaryDevice)
+        }
+      } else {
+        reportActivationFailure(for: nil)
+      }
     } else if !shouldActivate {
       self.menu.replaceItems(with: items)
       statusItem.popUpMenu(menu)
