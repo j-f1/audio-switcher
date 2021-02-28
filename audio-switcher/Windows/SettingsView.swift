@@ -11,6 +11,7 @@ import LaunchAtLogin
 
 let openMenuText = Text("open the menu and change your settings.")
 let setOutputText = { (name: String?) in Text("send music, videos, and sounds to “\(name ?? "<choose device>")\u{202d}.”") }
+let toggleOutputText = { (name1: String?, name2: String?) in Text("toggle between sending music, videos, and sounds to “\(name1 ?? "<choose device>")\u{202d}” and “\(name2 ?? "<choose device>")\u{202d}.”") }
 
 let clickIconToText = { (icon: String) in Text("Click the ") + Text(Image(systemName: icon)) + Text(" icon in the menu bar to ") }
 let altClickIconToText = { (icon: String) in Text("Option-click, control-click, or right-click the ") + Text(Image(systemName: icon)) + Text(" icon to ") }
@@ -40,20 +41,25 @@ struct SettingsView: View {
       Toggle(isOn: $clickToActivate) {
         VStack(alignment: .leading, spacing: 5) {
           HStack(spacing: 0) {
-            Text("Click menu item to activate “").fixedSize()
-            Text(selectedDevice ?? "<choose device>")
-              .lineLimit(1)
-              .truncationMode(.tail)
-            Text("”").fixedSize()
+            Text("Click menu item to ").fixedSize()
+            if secondDeviceEnabled {
+              Text("toggle output devices")
+            } else {
+              Text("activate “")
+              Text(selectedDevice ?? "<choose device>")
+                .lineLimit(1)
+                .truncationMode(.tail)
+              Text("”").fixedSize()
+            }
           }
           ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 5) {
-              clickIconToText(selectedIcon) + setOutputText(selectedDevice)
+              clickIconToText(selectedIcon) + (secondDeviceEnabled ? toggleOutputText(selectedDevice, secondarySelectedDevice) : setOutputText(selectedDevice))
               altClickIconToText(selectedIcon) + openMenuText
             }.opacity(clickToActivate ? 1 : 0)
             VStack(alignment: .leading, spacing: 5) {
               clickIconToText(selectedIcon) + openMenuText
-              altClickIconToText(selectedIcon) + setOutputText(selectedDevice)
+              altClickIconToText(selectedIcon) + (secondDeviceEnabled ? toggleOutputText(selectedDevice, secondarySelectedDevice) : setOutputText(selectedDevice))
             }.opacity(clickToActivate ? 0 : 1)
           }.foregroundColor(.secondary)
            .imageScale(.small)
@@ -71,7 +77,7 @@ struct SettingsView: View {
       Group {
         Toggle(isOn: $secondDeviceEnabled) {
           Text("Alternate with Second Device").font(.headline)
-        }.padding(.top, 8)
+        }.padding(.vertical, 8)
         if secondDeviceEnabled {
           DevicePickerView(selectedDevice: $secondarySelectedDevice)
         }
