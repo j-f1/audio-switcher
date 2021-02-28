@@ -71,7 +71,7 @@ struct SettingsView: View {
       Group {
         Divider().padding(.vertical, 8)
         Text("Device to Activate").font(.headline)
-        DevicePickerView(selectedDevice: $selectedDevice)
+        DevicePickerView(selectedDevice: $selectedDevice, alreadySelected: secondDeviceEnabled ? secondarySelectedDevice : nil)
       }
 
       Group {
@@ -79,7 +79,7 @@ struct SettingsView: View {
           Text("Alternate with Second Device").font(.headline)
         }.padding(.vertical, 8)
         if secondDeviceEnabled {
-          DevicePickerView(selectedDevice: $secondarySelectedDevice)
+          DevicePickerView(selectedDevice: $secondarySelectedDevice, alreadySelected: selectedDevice)
         }
       }.onChange(of: secondDeviceEnabled, perform: { value in
         if !value {

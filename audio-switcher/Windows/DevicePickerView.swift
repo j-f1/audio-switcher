@@ -10,12 +10,14 @@ import Defaults
 
 public struct DevicePickerView: View {
   @Binding var selectedDevice: String?
+  let alreadySelected: String?
 
   @State var isCustomDevice: Bool
   @ObservedObject var devices = AudioDeviceList.shared
 
-  init(selectedDevice: Binding<String?>) {
+  init(selectedDevice: Binding<String?>, alreadySelected: String?) {
     self._selectedDevice = selectedDevice
+    self.alreadySelected = alreadySelected
 
     let isCustomDevice: Bool
     if let selectedDevice = selectedDevice.wrappedValue {
@@ -41,7 +43,15 @@ public struct DevicePickerView: View {
       List(selection: $selectedDevice) {
         ForEach(devices.devices) { device in
           if let name = device.name {
-            Text(name).tag(name)
+            HStack {
+              Text(name)
+              if name == alreadySelected && name == selectedDevice {
+                Spacer()
+                Image(systemName: "exclamationmark.triangle.fill")
+                  .foregroundColor(.primary)
+                  .help("This output is already being used as the other output device")
+              }
+            }.tag(name)
           }
         }
       }
@@ -55,7 +65,7 @@ struct DevicePickerView_Previews: PreviewProvider {
   struct TestView: View {
     @State var device: String?
     var body: some View {
-      DevicePickerView(selectedDevice: $device)
+      DevicePickerView(selectedDevice: $device, alreadySelected: nil)
     }
   }
   static var previews: some View {
