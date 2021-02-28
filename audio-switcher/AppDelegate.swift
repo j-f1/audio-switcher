@@ -28,6 +28,7 @@ extension Array {
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
   var statusBar: StatusBarController!
   let prefsWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "PrefsWindow")
+  let welcomeWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WelcomeWindow")
   #if canImport(AboutScreen)
   let aboutWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "AboutWindow")
   #endif
@@ -46,6 +47,16 @@ extension Array {
   func applicationDidFinishLaunching(_ notification: Notification) {
     prefsWC.contentViewController = NSHostingController(rootView: SettingsView())
     prefsWC.window!.backgroundColor = NSColor.underPageBackgroundColor
+    if Defaults[.latestRunVersion] == nil {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+        self.welcomeWC.open()
+      }
+      if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+        Defaults[.latestRunVersion] = "1.1" // version
+      } else {
+        Defaults[.latestRunVersion] = ""
+      }
+    }
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
       let names: [String] = [Defaults[.deviceName], Defaults[.secondaryDeviceName]].compactMap { $0 }
@@ -85,6 +96,10 @@ extension Array {
           self.aboutWC.open()
         }
       #endif
+      MenuItem("Welcome Window…")
+        .onSelect {
+          self.welcomeWC.open()
+        }
       MenuItem("Send Feedback…")
         .onSelect {
           NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/audio-switcher/issues/new")!)

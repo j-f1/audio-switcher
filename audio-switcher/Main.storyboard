@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -117,6 +117,44 @@
                 <customObject id="eRL-nc-3CD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-317" y="426"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="IC3-w7-esz">
+            <objects>
+                <windowController storyboardIdentifier="WelcomeWindow" id="V0W-JW-acF" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Welcome to Instant Audio Switcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" toolbarStyle="unified" titleVisibility="hidden" id="xbn-ic-iLw">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                        <view key="contentView" id="O2v-yd-HOS">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="V0W-JW-acF" id="aRc-qG-bJ6"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="nFi-t2-7Ui" kind="relationship" relationship="window.shadowedContentViewController" id="HIY-Nc-yYX"/>
+                    </connections>
+                </windowController>
+                <customObject id="87I-mK-vK6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-401" y="879"/>
+        </scene>
+        <!--WelcomeVC-->
+        <scene sceneID="lls-PY-0Pz">
+            <objects>
+                <viewController id="nFi-t2-7Ui" customClass="WelcomeVC" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="rgU-em-xIW">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="xTe-Oc-zrf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="848"/>
         </scene>
         <!--About ScreenVC-->
         <scene sceneID="OqS-nT-OSN">
