@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8501EA4225EC3DEB00373D43 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501EA4125EC3DEB00373D43 /* WelcomeWindow.swift */; };
 		850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8B925A11AA600E14EB9 /* AboutScreen */; };
 		850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8C425A120AF00E14EB9 /* LaunchAtLogin */; };
 		856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 856853E525B371BE00D59E2C /* AudioChangeNotifier.m */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8501EA4125EC3DEB00373D43 /* WelcomeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
 		850AB8B525A118A000E14EB9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		850AB8BD25A11CB900E14EB9 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		856853E325B371BD00D59E2C /* Instant Audio Switcher-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Instant Audio Switcher-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
 				85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */,
 				85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */,
+				8501EA4125EC3DEB00373D43 /* WelcomeWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
 				85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */,
 				85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */,
+				8501EA4225EC3DEB00373D43 /* WelcomeWindow.swift in Sources */,
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
 				85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */,
 				856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */,
