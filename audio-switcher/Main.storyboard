@@ -69,7 +69,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="-307"/>
+            <point key="canvasLocation" x="-41" y="466"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="FHu-Ag-Ovb">
@@ -91,13 +91,13 @@
                 </windowController>
                 <customObject id="8am-8Y-jeH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="0.0"/>
+            <point key="canvasLocation" x="888" y="755"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="j9h-QS-8zW">
             <objects>
                 <windowController storyboardIdentifier="AboutWindow" id="JRt-gi-SPP" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="B8i-22-oDr">
+                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" id="B8i-22-oDr">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
@@ -116,17 +116,17 @@
                 </windowController>
                 <customObject id="eRL-nc-3CD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="426"/>
+            <point key="canvasLocation" x="352" y="755"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="IC3-w7-esz">
             <objects>
                 <windowController storyboardIdentifier="WelcomeWindow" id="V0W-JW-acF" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Welcome to Instant Audio Switcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" toolbarStyle="unified" titleVisibility="hidden" id="xbn-ic-iLw">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
+                    <window key="window" title="Welcome to Instant Audio Switcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" titlebarAppearsTransparent="YES" toolbarStyle="unified" titleVisibility="hidden" id="xbn-ic-iLw">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <view key="contentView" id="O2v-yd-HOS">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -141,7 +141,7 @@
                 </windowController>
                 <customObject id="87I-mK-vK6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="879"/>
+            <point key="canvasLocation" x="-699" y="755"/>
         </scene>
         <!--WelcomeVC-->
         <scene sceneID="lls-PY-0Pz">
@@ -154,7 +154,7 @@
                 </viewController>
                 <customObject id="xTe-Oc-zrf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="848"/>
+            <point key="canvasLocation" x="-699" y="1158"/>
         </scene>
         <!--About ScreenVC-->
         <scene sceneID="OqS-nT-OSN">
@@ -167,7 +167,45 @@
                 </viewController>
                 <customObject id="tmd-nf-p1U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="395"/>
+            <point key="canvasLocation" x="352" y="1158"/>
+        </scene>
+        <!--Whats NewVC-->
+        <scene sceneID="B09-nY-omK">
+            <objects>
+                <viewController id="syc-gH-tnG" customClass="WhatsNewVC" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="XPT-jf-OgY">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="nbF-H7-G8z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-177" y="1150"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="YGw-JT-YtX">
+            <objects>
+                <windowController storyboardIdentifier="WhatsNewWindow" id="QjT-P6-ph0" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="What’s New in Instant Audio Switcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" toolbarStyle="unified" id="KIV-tS-lWe">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="298"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+                        <view key="contentView" id="XYM-nF-aa1">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="298"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="QjT-P6-ph0" id="k6H-CZ-g08"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="syc-gH-tnG" kind="relationship" relationship="window.shadowedContentViewController" id="avb-nk-bfp"/>
+                    </connections>
+                </windowController>
+                <customObject id="qEw-oL-1bZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-177" y="741"/>
         </scene>
     </scenes>
 </document>

@@ -29,6 +29,7 @@ extension Array {
   var statusBar: StatusBarController!
   let prefsWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "PrefsWindow")
   let welcomeWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WelcomeWindow")
+  let whatsNewWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WhatsNewWindow")
   #if canImport(AboutScreen)
   let aboutWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "AboutWindow")
   #endif
@@ -47,15 +48,17 @@ extension Array {
   func applicationDidFinishLaunching(_ notification: Notification) {
     prefsWC.contentViewController = NSHostingController(rootView: SettingsView())
     prefsWC.window!.backgroundColor = NSColor.underPageBackgroundColor
-    if Defaults[.latestRunVersion] == nil {
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
-        self.welcomeWC.open()
-      }
-      if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-        Defaults[.latestRunVersion] = "1.1" // version
+    let newVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+      if let lastRunVersion = Defaults[.latestRunVersion] {
+        if newVersion != lastRunVersion {
+          (self.whatsNewWC.contentViewController as! WhatsNewVC).lastVersion = lastRunVersion
+          self.whatsNewWC.open()
+        }
       } else {
-        Defaults[.latestRunVersion] = ""
+          self.welcomeWC.open()
       }
+      Defaults[.latestRunVersion] = "1.0" // newVersion
     }
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
@@ -99,6 +102,11 @@ extension Array {
       MenuItem("Welcome Window…")
         .onSelect {
           self.welcomeWC.open()
+        }
+      MenuItem("What’s New…")
+        .onSelect {
+          (self.whatsNewWC.contentViewController as! WhatsNewVC).lastVersion = "1.0"
+          self.whatsNewWC.open()
         }
       MenuItem("Send Feedback…")
         .onSelect {
