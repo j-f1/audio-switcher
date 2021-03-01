@@ -53,30 +53,32 @@ struct WhatsNewWindow: View {
   @Environment(\.colorScheme) var colorScheme
   var body: some View {
     let versionsToShow = Version.allVersions.prefix(while: { $0.rawValue != fromVersion })
-    ScrollView {
-      VStack(alignment: .leading) {
-        ForEach(versionsToShow, id: \.self) { version in
-          HStack(alignment: .top) {
+    VStack(alignment: .leading) {
+      ForEach(versionsToShow, id: \.self) { version in
+        HStack(alignment: .top) {
+          if versionsToShow.count > 1 {
             Text("v" + version.rawValue)
               .font(.headline)
-              .frame(width: 40, alignment: .trailing)
+              .frame(width: 30, alignment: .trailing)
               .padding(.top, 5)
-            VStack(alignment: .leading) {
-              ForEach(version.changelog) { $0 }
-            }
-          }.padding(.vertical, 5)
-        }
+          }
+          VStack(alignment: .leading) {
+            ForEach(version.changelog) { $0 }
+          }
+        }.padding(.vertical, 5)
       }
-      .padding()
     }
+    .padding()
+    .padding(.horizontal)
     .background(Color(NSColor.textBackgroundColor))
-    .frame(minHeight: 200)
     .fixedSize(horizontal: true, vertical: false)
   }
 }
 
 struct WhatsNewWindow_Previews: PreviewProvider {
   static var previews: some View {
+    WhatsNewWindow(fromVersion: "1.1").preferredColorScheme(.light)
+    WhatsNewWindow(fromVersion: "1.1").preferredColorScheme(.dark)
     WhatsNewWindow(fromVersion: "1.0").preferredColorScheme(.light)
     WhatsNewWindow(fromVersion: "1.0").preferredColorScheme(.dark)
   }

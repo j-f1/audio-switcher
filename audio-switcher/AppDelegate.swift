@@ -57,7 +57,7 @@ extension Array {
       } else {
           self.welcomeWC.open()
       }
-      Defaults[.latestRunVersion] = "1.0" // newVersion
+      Defaults[.latestRunVersion] = newVersion
     }
     statusBar = StatusBarController {
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
@@ -98,7 +98,7 @@ extension Array {
           self.aboutWC.open()
         }
       #endif
-      MenuItem("Welcome Window…")
+      MenuItem("Welcome…")
         .onSelect {
           self.welcomeWC.open()
         }
