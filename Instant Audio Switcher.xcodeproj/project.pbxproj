@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8501EA4225EC3DEB00373D43 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501EA4125EC3DEB00373D43 /* WelcomeWindow.swift */; };
-		850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8B925A11AA600E14EB9 /* AboutScreen */; };
 		8501EA4725EC4A7D00373D43 /* WhatsNewWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501EA4625EC4A7C00373D43 /* WhatsNewWindow.swift */; };
 		8501EA4B25EC4AA000373D43 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501EA4A25EC4AA000373D43 /* WhatsNew.swift */; };
+		850AB8BA25A11AA600E14EB9 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8B925A11AA600E14EB9 /* AboutScreen */; };
 		850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8C425A120AF00E14EB9 /* LaunchAtLogin */; };
 		856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 856853E525B371BE00D59E2C /* AudioChangeNotifier.m */; };
 		85A011F725B28A3300F0A5B4 /* sound-effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 85A011F625B28A3300F0A5B4 /* sound-effect.wav */; };
@@ -383,7 +383,7 @@
 				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"audio-switcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -394,7 +394,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "audio-switcher/Instant Audio Switcher-Bridging-Header.h";
@@ -412,7 +412,7 @@
 				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"audio-switcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -423,7 +423,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "audio-switcher/Instant Audio Switcher-Bridging-Header.h";
