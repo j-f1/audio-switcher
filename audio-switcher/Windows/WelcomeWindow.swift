@@ -41,6 +41,7 @@ struct WelcomeWindow: View {
         .font(.title2)
         .bold()
       Text("I recommend enabling both of these options:")
+        .padding(.top, 5)
       Group {
         Toggle("Hide from Dock", isOn: .init(get: { !showInDock }, set: { showInDock = !$0 }))
         LaunchAtLogin.Toggle()
@@ -56,7 +57,7 @@ struct WelcomeWindow: View {
     }
     .padding([.horizontal, .bottom])
     .padding(.top, 5)
-    .frame(width: 400).fixedSize()
+    .frame(width: 350).fixedSize()
   }
 }
 
