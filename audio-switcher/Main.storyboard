@@ -88,6 +88,9 @@
                             <outlet property="delegate" destination="vRF-g9-cLh" id="dCH-Ii-toM"/>
                         </connections>
                     </window>
+                    <connections>
+                        <segue destination="gsJ-Km-Xe2" kind="relationship" relationship="window.shadowedContentViewController" id="lXj-ov-PvG"/>
+                    </connections>
                 </windowController>
                 <customObject id="8am-8Y-jeH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,14 +183,14 @@
                 </viewController>
                 <customObject id="nbF-H7-G8z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="1150"/>
+            <point key="canvasLocation" x="-177" y="1158"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="YGw-JT-YtX">
             <objects>
                 <windowController storyboardIdentifier="WhatsNewWindow" id="QjT-P6-ph0" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="What’s New in Instant Audio Switcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" toolbarStyle="unified" id="KIV-tS-lWe">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="298"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
@@ -206,6 +209,19 @@
                 <customObject id="qEw-oL-1bZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-177" y="741"/>
+        </scene>
+        <!--SettingsVC-->
+        <scene sceneID="w3o-Oh-q3A">
+            <objects>
+                <viewController id="gsJ-Km-Xe2" customClass="SettingsVC" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aBh-vs-WhL">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="JbL-1m-DyV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="888" y="1158"/>
         </scene>
     </scenes>
 </document>

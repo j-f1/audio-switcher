@@ -46,7 +46,6 @@ extension Array {
   }
 
   func applicationDidFinishLaunching(_ notification: Notification) {
-    prefsWC.contentViewController = NSHostingController(rootView: SettingsView())
     prefsWC.window!.backgroundColor = NSColor.underPageBackgroundColor
     let newVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {

@@ -9,6 +9,12 @@ import SwiftUI
 import Defaults
 import LaunchAtLogin
 
+class SettingsVC: NSHostingController<SettingsView> {
+  required init?(coder: NSCoder) {
+    super.init(coder: coder, rootView: SettingsView())
+  }
+}
+
 let openMenuText = Text("open the menu and change your settings.")
 let setOutputText = { (name: String?) in Text("send music, videos, and sounds to “\(name ?? "<choose device>")\u{202d}.”") }
 let toggleOutputText = { (name1: String?, name2: String?) in Text("toggle between sending music, videos, and sounds to “\(name1 ?? "<choose device>")\u{202d}” and “\(name2 ?? "<choose device>")\u{202d}.”") }
