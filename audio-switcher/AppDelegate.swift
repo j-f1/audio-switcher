@@ -91,25 +91,25 @@ extension Array {
         .onSelect {
           self.prefsWC.open()
         }
+      MenuItem("Send Feedback…")
+        .onSelect {
+          NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/audio-switcher/issues/new")!)
+        }
       SeparatorItem()
+      MenuItem("Welcome…")
+        .onSelect {
+          self.welcomeWC.open()
+        }
       #if canImport(AboutScreen)
       MenuItem("About \(appName)")
         .onSelect {
           self.aboutWC.open()
         }
       #endif
-      MenuItem("Welcome…")
-        .onSelect {
-          self.welcomeWC.open()
-        }
       MenuItem("What’s New…")
         .onSelect {
           (self.whatsNewWC.contentViewController as! WhatsNewVC).lastVersion = "1.0"
           self.whatsNewWC.open()
-        }
-      MenuItem("Send Feedback…")
-        .onSelect {
-          NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/audio-switcher/issues/new")!)
         }
       SeparatorItem()
       MenuItem("Quit \(appName)")
