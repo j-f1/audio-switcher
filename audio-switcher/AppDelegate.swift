@@ -94,7 +94,7 @@ extension Array {
         }
       MenuItem("Send Feedback…")
         .onSelect {
-          NSWorkspace.shared.open(URL(string: "https://github.com/j-f1/audio-switcher/issues/new")!)
+          NSWorkspace.shared.open(URL(string: "https://j-f1.github.io/audio-switcher/contact.html")!)
         }
       SeparatorItem()
       MenuItem("Welcome…")
