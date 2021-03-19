@@ -27,7 +27,7 @@
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
 		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
 		85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E3259F863D001831C0 /* IconPickerView.swift */; };
-		85F1D0EB259FBCDD001831C0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E6259F8B19001831C0 /* SettingsView.swift */; };
+		85F1D0EB259FBCDD001831C0 /* IconSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E6259F8B19001831C0 /* IconSettings.swift */; };
 		85F1D0F525A0D2C4001831C0 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */; };
 		85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */; };
 		85FB338326044ACD00FD7739 /* DeviceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FB338226044ACD00FD7739 /* DeviceSettings.swift */; };
@@ -57,7 +57,7 @@
 		85D6E4FE2604481C0063543A /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		85F1D0DC259E754D001831C0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		85F1D0E3259F863D001831C0 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
-		85F1D0E6259F8B19001831C0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85F1D0E6259F8B19001831C0 /* IconSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSettings.swift; sourceTree = "<group>"; };
 		85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
 		85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransientWindowController.swift; sourceTree = "<group>"; };
 		85FB338226044ACD00FD7739 /* DeviceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettings.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 		856D242225A0EA7300D89DAE /* Windows */ = {
 			isa = PBXGroup;
 			children = (
-				85F1D0E6259F8B19001831C0 /* SettingsView.swift */,
 				85F1D0E3259F863D001831C0 /* IconPickerView.swift */,
 				85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */,
 				85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */,
@@ -148,6 +147,7 @@
 				85D6E4F9260447BC0063543A /* Preferences.swift */,
 				85FB338226044ACD00FD7739 /* DeviceSettings.swift */,
 				85D6E4FE2604481C0063543A /* GeneralSettings.swift */,
+				85F1D0E6259F8B19001831C0 /* IconSettings.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -208,6 +208,7 @@
 				85F1D0D4259E6AA9001831C0 /* XCRemoteSwiftPackageReference "MenuBuilder" */,
 				850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				85D6E4F5260446CA0063543A /* XCRemoteSwiftPackageReference "Preferences" */,
+				85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 85BB5330259D1F2A00F0AC19 /* Products */;
 			projectDirPath = "";
@@ -258,7 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8501EA4725EC4A7D00373D43 /* WhatsNewWindow.swift in Sources */,
-				85F1D0EB259FBCDD001831C0 /* SettingsView.swift in Sources */,
+				85F1D0EB259FBCDD001831C0 /* IconSettings.swift in Sources */,
 				85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */,
 				85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */,
 				85D6E4FF2604481C0063543A /* GeneralSettings.swift in Sources */,
