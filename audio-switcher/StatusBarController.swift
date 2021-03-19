@@ -97,9 +97,11 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     device.activate(for: .output)
     if Device.selected(for: .output) == device {
       print("ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
-      self.audioPlayer?.pause()
-      audioPlayer?.currentTime = 0
-      self.audioPlayer?.play()
+      if Defaults[.playSound] {
+        self.audioPlayer?.pause()
+        audioPlayer?.currentTime = 0
+        self.audioPlayer?.play()
+      }
     } else if start.distance(to: .now()) > .seconds(5) {
       reportActivationFailure(for: device.name)
     } else {
