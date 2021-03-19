@@ -27,14 +27,14 @@ fileprivate struct Token: View {
       .padding(3)
       .foregroundColor(colorScheme == .dark ? .black : .white)
       .font(.caption)
+      .frame(width: 40)
       .background(RoundedRectangle(cornerRadius: 5).fill(color))
-      .padding(3)
   }
 }
 
 extension ChangelogEntry: View {
   var body: some View {
-    HStack {
+    HStack(alignment: .top) {
       switch self {
       case .feature(let s):
         Token(color: .green, text: "NEW")
@@ -43,8 +43,7 @@ extension ChangelogEntry: View {
         Token(color: .orange, text: "FIXED")
         Text(s)
       }
-    }
-
+    }.padding(1)
   }
 }
 
@@ -59,19 +58,19 @@ struct WhatsNewWindow: View {
           if versionsToShow.count > 1 {
             Text("v" + version.rawValue)
               .font(.headline)
-              .frame(width: 30, alignment: .trailing)
+              .frame(width: 45, alignment: .trailing)
               .padding(.top, 5)
           }
-          VStack(alignment: .leading) {
+          VStack(alignment: .leading, spacing: 5) {
             ForEach(version.changelog) { $0 }
-          }
+          }.padding(.top, 3)
         }.padding(.vertical, 5)
       }
     }
     .padding()
     .padding(.horizontal)
     .background(Color(NSColor.textBackgroundColor))
-    .fixedSize(horizontal: true, vertical: false)
+    .frame(width: 650)
   }
 }
 
