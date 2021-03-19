@@ -75,6 +75,10 @@ extension Array {
     welcomeWC.window!.backgroundColor = NSColor.underPageBackgroundColor
     let newVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+      // forgot to add release notes, oops!
+      if Defaults[.latestRunVersion] == "1.3" {
+        Defaults[.latestRunVersion] = "1.2"
+      }
       if let lastRunVersion = Defaults[.latestRunVersion] {
         if newVersion != lastRunVersion {
           (self.whatsNewWC.contentViewController as! WhatsNewVC).lastVersion = lastRunVersion

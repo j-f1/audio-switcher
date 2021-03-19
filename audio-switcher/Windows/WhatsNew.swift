@@ -25,12 +25,22 @@ extension ChangelogEntry: Identifiable {
 enum Version: String, Identifiable {
   var id: String { rawValue }
 
+  case v1_3_1 = "1.3.1"
+  case v1_3 = "1.3"
   case v1_2 = "1.2"
   case v1_1 = "1.1"
 
-  static let allVersions: [Version] = [.v1_2, .v1_1]
+  static let allVersions: [Version] = [.v1_3_1, .v1_3, .v1_2, .v1_1]
   var changelog: [ChangelogEntry] {
     switch self {
+    case .v1_3_1: return [
+      .bug("Disabling “Play sound after connecting” now turns off the sound effect played after connecting")
+    ]
+    case .v1_3: return [
+      .feature("Option to add a shortcut for toggling/switching to your preferred audio output"),
+      .feature("Redesigned Preferences window"),
+      .feature("Easier to access feedback"),
+    ]
     case .v1_2: return [
       .feature("Ability to add a second device to toggle between"),
       .feature("Welcome window for new users"),
