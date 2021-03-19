@@ -10,6 +10,7 @@ import Defaults
 import SwiftUI
 import CoreFoundation
 import MenuBuilder
+import Preferences
 
 func quote(_ str: String) -> String {
   "“\(str)\u{200d}”"
@@ -27,7 +28,31 @@ extension Array {
 @NSApplicationMain
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
   var statusBar: StatusBarController!
-  let prefsWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "PrefsWindow")
+  lazy var prefsWC = PreferencesWindowController(
+    panes: [
+      Preferences.Pane(
+        identifier: .general,
+        title: "General",
+        toolbarIcon: NSImage(systemSymbolName: "gearshape", accessibilityDescription: "General preferences")!
+      ) {
+        GeneralSettings()
+      },
+      Preferences.Pane(
+        identifier: .device,
+        title: "Device",
+        toolbarIcon: NSImage(systemSymbolName: "speaker.wave.2", accessibilityDescription: "Device preferences")!
+      ) {
+        DeviceSettings()
+      },
+      Preferences.Pane(
+        identifier: .icon,
+        title: "Icon",
+        toolbarIcon: NSImage(systemSymbolName: "sparkles", accessibilityDescription: "Icon preferences")!
+      ) {
+        IconSettings()
+      },
+    ]
+  )
   let welcomeWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WelcomeWindow")
   let whatsNewWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WhatsNewWindow")
   #if canImport(AboutScreen)
@@ -61,6 +86,10 @@ extension Array {
       Defaults[.latestRunVersion] = newVersion
     }
     statusBar = StatusBarController {
+      #if DEBUG
+      MenuItem("DEV MODE")
+      SeparatorItem()
+      #endif
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
       let names: [String] = [Defaults[.deviceName], Defaults[.secondaryDeviceName]].compactMap { $0 }
       if names.isEmpty {
@@ -90,7 +119,7 @@ extension Array {
       MenuItem("Preferences")
         .shortcut(",")
         .onSelect {
-          self.prefsWC.open()
+          self.prefsWC.show()
         }
       MenuItem("Send Feedback…")
         .onSelect {
@@ -122,7 +151,7 @@ extension Array {
       NSApp.setActivationPolicy(Defaults[.showInDock] ? .regular : .accessory)
       if self.prefsWC.window!.isVisible {
         DispatchQueue.main.async {
-          self.prefsWC.open()
+          self.prefsWC.show()
           self.prefsWC.window!.makeKey()
         }
       }

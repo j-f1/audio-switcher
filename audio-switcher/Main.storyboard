@@ -69,32 +69,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-41" y="466"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="FHu-Ag-Ovb">
-            <objects>
-                <windowController storyboardIdentifier="PrefsWindow" id="vRF-g9-cLh" customClass="TransientWindowController" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="wgK-OB-xju">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
-                        <view key="contentView" id="I8C-mG-8uq">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </view>
-                        <connections>
-                            <outlet property="delegate" destination="vRF-g9-cLh" id="dCH-Ii-toM"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="gsJ-Km-Xe2" kind="relationship" relationship="window.shadowedContentViewController" id="lXj-ov-PvG"/>
-                    </connections>
-                </windowController>
-                <customObject id="8am-8Y-jeH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="888" y="755"/>
+            <point key="canvasLocation" x="-177" y="466"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="j9h-QS-8zW">
@@ -209,19 +184,6 @@
                 <customObject id="qEw-oL-1bZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-177" y="741"/>
-        </scene>
-        <!--SettingsVC-->
-        <scene sceneID="w3o-Oh-q3A">
-            <objects>
-                <viewController id="gsJ-Km-Xe2" customClass="SettingsVC" customModule="Instant_Audio_Switcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="aBh-vs-WhL">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="JbL-1m-DyV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="888" y="1158"/>
         </scene>
     </scenes>
 </document>

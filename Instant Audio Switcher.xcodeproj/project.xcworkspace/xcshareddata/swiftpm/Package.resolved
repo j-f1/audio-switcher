@@ -2,39 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "AboutScreen",
-        "repositoryURL": "https://github.com/j-f1/AboutScreen.git",
-        "state": {
-          "branch": null,
-          "revision": "06c1f027e3a547fa24dc1fe919ebba0ed1c52ebc",
-          "version": "1.5.8"
-        }
-      },
-      {
-        "package": "BetterSafariView",
-        "repositoryURL": "https://github.com/boherna/BetterSafariView",
-        "state": {
-          "branch": null,
-          "revision": "04e067b9a29fc634138e761d36028d22eb5bb41c",
-          "version": "2.2.5"
-        }
-      },
-      {
         "package": "Defaults",
         "repositoryURL": "https://github.com/sindresorhus/Defaults",
         "state": {
           "branch": null,
           "revision": "d98119fee49c893fae553103a8659ffe003b6cfe",
           "version": "4.1.0"
-        }
-      },
-      {
-        "package": "Helpers",
-        "repositoryURL": "https://github.com/j-f1/ios-helpers",
-        "state": {
-          "branch": null,
-          "revision": "f4896e0090d3e1ad1f541cceef67f521baa08b07",
-          "version": "1.2.0"
         }
       },
       {
@@ -53,6 +26,15 @@
           "branch": null,
           "revision": "05712fcad493eed481605f3984151b1bb050fa2f",
           "version": "1.2.0"
+        }
+      },
+      {
+        "package": "Preferences",
+        "repositoryURL": "https://github.com/sindresorhus/Preferences",
+        "state": {
+          "branch": null,
+          "revision": "886324b2f1ba58d9cda745a6dd53253179d73433",
+          "version": "2.2.1"
         }
       }
     ]

@@ -30,34 +30,35 @@ public struct DevicePickerView: View {
   }
 
   public var body: some View {
-    Picker(selection: $isCustomDevice, label: EmptyView()) {
-      Text("Connected Device").tag(false)
-      Text("Other Device").tag(true)
-    }.offset(y: -3).pickerStyle(SegmentedPickerStyle())
-    if isCustomDevice {
-      TextField("Custom Name", text: .init(get: { selectedDevice ?? "" }, set: { selectedDevice = $0 }))
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-      Text("This name must exactly match the device’s name.")
-        .foregroundColor(.secondary)
-    } else {
-      List(selection: $selectedDevice) {
-        ForEach(devices.devices) { device in
-          if let name = device.name {
-            HStack {
-              Text(name)
-              if name == alreadySelected && name == selectedDevice {
-                Spacer()
-                Image(systemName: "exclamationmark.triangle.fill")
-                  .foregroundColor(.primary)
-                  .help("This output is already being used as the other output device")
-              }
-            }.tag(name)
+    VStack {
+      Picker(selection: $isCustomDevice, label: EmptyView()) {
+        Text("Connected Device").tag(false)
+        Text("Other Device").tag(true)
+      }.offset(y: -3).pickerStyle(SegmentedPickerStyle())
+      if isCustomDevice {
+        TextField("Custom Name", text: .init(get: { selectedDevice ?? "" }, set: { selectedDevice = $0 }))
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+        Text("This name must exactly match the device’s name.")
+          .foregroundColor(.secondary)
+        Spacer(minLength: 0)
+      } else {
+        List(selection: $selectedDevice) {
+          ForEach(devices.devices) { device in
+            if let name = device.name {
+              HStack {
+                Text(name)
+                if name == alreadySelected && name == selectedDevice {
+                  Spacer()
+                  Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundColor(.primary)
+                    .help("This output is already being used as the other output device")
+                }
+              }.tag(name)
+            }
           }
-        }
+        }.cornerRadius(9)
       }
-      .cornerRadius(9)
-      .frame(minHeight: 100)
-    }
+    }.frame(height: 130)
   }
 }
 

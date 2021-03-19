@@ -30,12 +30,20 @@ let dependencies = [
       + Text("s")
   ),
   Dependency(
-    "Defaults",
+    "LaunchAtLogin",
     url: "https://github.com/sindresorhus/LaunchAtLogin",
     version: "4.0.0",
     license: .mit,
     licenseURL: "https://github.com/sindresorhus/LaunchAtLogin/blob/4.0.0/license",
     description: "Add “Launch at Login” functionality to your macOS app in seconds"
+  ),
+  Dependency(
+    "Preferences",
+    url: "https://github.com/sindresorhus/Preferences",
+    version: "2.2.1",
+    license: .mit,
+    licenseURL: "https://github.com/sindresorhus/Preferences/blob/v2.2.1/license",
+    description: "Add a preferences window to your macOS app in minutes"
   ),
 ]
 
