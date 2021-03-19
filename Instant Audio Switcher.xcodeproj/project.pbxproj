@@ -31,6 +31,7 @@
 		85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */; };
 		85FB338326044ACD00FD7739 /* DeviceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FB338226044ACD00FD7739 /* DeviceSettings.swift */; };
 		85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 85FB33872604520C00FD7739 /* KeyboardShortcuts */; };
+		85FB3396260507B100FD7739 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 85FB3395260507B100FD7739 /* AboutScreen */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 				85D6E4F7260446CA0063543A /* Preferences in Frameworks */,
 				85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */,
 				850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */,
+				85FB3396260507B100FD7739 /* AboutScreen in Frameworks */,
 				85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +176,7 @@
 				850AB8C425A120AF00E14EB9 /* LaunchAtLogin */,
 				85D6E4F6260446CA0063543A /* Preferences */,
 				85FB33872604520C00FD7739 /* KeyboardShortcuts */,
+				85FB3395260507B100FD7739 /* AboutScreen */,
 			);
 			productName = "Instant Audio Switcher";
 			productReference = 85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */;
@@ -209,6 +212,7 @@
 				850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				85D6E4F5260446CA0063543A /* XCRemoteSwiftPackageReference "Preferences" */,
 				85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				85FB3394260507B100FD7739 /* XCRemoteSwiftPackageReference "AboutScreen" */,
 			);
 			productRefGroup = 85BB5330259D1F2A00F0AC19 /* Products */;
 			projectDirPath = "";
@@ -515,6 +519,14 @@
 				minimumVersion = 0.7.1;
 			};
 		};
+		85FB3394260507B100FD7739 /* XCRemoteSwiftPackageReference "AboutScreen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/j-f1/AboutScreen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -542,6 +554,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
+		};
+		85FB3395260507B100FD7739 /* AboutScreen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85FB3394260507B100FD7739 /* XCRemoteSwiftPackageReference "AboutScreen" */;
+			productName = AboutScreen;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

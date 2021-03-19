@@ -21,9 +21,9 @@ let dependencies = [
   Dependency(
     "MenuBuilder",
     url: "https://github.com/j-f1/MenuBuilder",
-    version: "1.0.1",
+    version: "1.2.0",
     license: .mit,
-    licenseURL: "https://github.com/user/repo/blob/1.0.1/LICENSE.md",
+    licenseURL: "https://github.com/user/repo/blob/1.2.0/LICENSE.md",
     description:
       Text("Swift Function Builder for creating ")
       + Text("NSMenuItem").font(.system(.body, design: .monospaced))
