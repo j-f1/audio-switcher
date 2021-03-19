@@ -45,6 +45,14 @@ let dependencies = [
     licenseURL: "https://github.com/sindresorhus/Preferences/blob/v2.2.1/license",
     description: "Add a preferences window to your macOS app in minutes"
   ),
+  Dependency(
+    "KeyboardShortcuts",
+    url: "https://github.com/sindresorhus/KeyboardShortcuts",
+    version: "0.7.1",
+    license: .mit,
+    licenseURL: "https://github.com/sindresorhus/KeyboardShortcuts/blob/v0.7.1/license",
+    description: "Add user-customizable global keyboard shortcuts to your macOS app in minutes"
+  ),
 ]
 
 class AboutScreenVC: NSHostingController<AnyView> {

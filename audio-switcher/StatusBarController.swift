@@ -11,6 +11,7 @@ import SwiftUI
 import MenuBuilder
 import AVFoundation
 import UserNotifications
+import KeyboardShortcuts
 
 extension DispatchTimeInterval: Comparable {
   var nanoseconds: Int64? {
@@ -68,6 +69,19 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     return center
   }()
 
+
+  func activateDevice() {
+    if let primaryDevice = Defaults[.deviceName] {
+      if let secondaryDevice = Defaults[.secondaryDeviceName],
+         primaryDevice == Device.selected(for: .output)?.name {
+        activateDevice(named: secondaryDevice)
+      } else {
+        activateDevice(named: primaryDevice)
+      }
+    } else {
+      reportActivationFailure(for: nil)
+    }
+  }
 
   func activateDevice(named name: String) {
     if let device = Device.named(name) {
@@ -146,6 +160,8 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     statusItem.button!.target = self
     statusItem.button!.action = #selector(onClick)
     statusItem.button!.sendAction(on: [.rightMouseUp, .leftMouseUp, .rightMouseDown, .leftMouseDown])
+
+    KeyboardShortcuts.onKeyUp(for: .activateDevice, action: activateDevice)
   }
   
   @objc func onClick() {
@@ -158,16 +174,7 @@ class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
     let shouldActivate = Defaults[.clickToActivate] ? !override : override
     
     if shouldActivate && (event.type == .leftMouseUp || event.type == .rightMouseUp) {
-      if let primaryDevice = Defaults[.deviceName] {
-        if let secondaryDevice = Defaults[.secondaryDeviceName],
-           primaryDevice == Device.selected(for: .output)?.name {
-          activateDevice(named: secondaryDevice)
-        } else {
-          activateDevice(named: primaryDevice)
-        }
-      } else {
-        reportActivationFailure(for: nil)
-      }
+      activateDevice()
     } else if !shouldActivate {
       self.menu.replaceItems(with: items)
       statusItem.popUpMenu(menu)

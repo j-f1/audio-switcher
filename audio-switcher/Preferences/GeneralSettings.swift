@@ -9,6 +9,7 @@ import SwiftUI
 import Defaults
 import LaunchAtLogin
 import Preferences
+import KeyboardShortcuts
 
 fileprivate let openMenuText = Text("open the menu and change your settings.")
 fileprivate let setOutputText = { (name: String?) in Text("send music, videos, and sounds to “\(name ?? "<choose device>")\u{202d}.”") }
@@ -33,6 +34,13 @@ struct GeneralSettings: View {
       Preferences.Section(title: "App Behavior") {
         Toggle("Hide from Dock", isOn: .init(get: { !showInDock }, set: { showInDock = !$0 }))
         LaunchAtLogin.Toggle()
+      }
+      Preferences.Section(title: "Keyboard Shortcut") {
+        HStack {
+          KeyboardShortcuts.Recorder(for: .activateDevice)
+          Text((secondDeviceEnabled ? "Toggle output devices" : "Activate your selected device"))
+            .preferenceDescription()
+        }
       }
       Preferences.Section(title: "Menu Behavior") {
         Toggle("Play sound after connecting", isOn: $playSound)

@@ -6,6 +6,8 @@
 //
 
 import Defaults
+import Preferences
+import KeyboardShortcuts
 
 extension Defaults.Keys {
   static let showInDock = Key<Bool>("showInDock", default: true)
@@ -16,4 +18,14 @@ extension Defaults.Keys {
   static let secondaryDeviceName = Key<String?>("secondaryDeviceName")
   static let iconName = Key<String>("iconName", default: "sparkles")
   static let latestRunVersion = Key<String?>("latestRunVersion")
+}
+
+extension KeyboardShortcuts.Name {
+  static let activateDevice = Self("activateDevice")
+}
+
+extension Preferences.PaneIdentifier {
+  static let general = Self("general")
+  static let device = Self("device")
+  static let icon = Self("icon")
 }

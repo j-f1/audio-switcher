@@ -20,9 +20,8 @@
 		85C4DCF2259D7A07005FF96F /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 85C4DCF1259D7A07005FF96F /* Defaults */; };
 		85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF4259E0405005FF96F /* AppDelegate.swift */; };
 		85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCF7259E04EE005FF96F /* StatusBarController.swift */; };
-		85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCFA259E07EF005FF96F /* Defaults.swift */; };
+		85C4DCFB259E07EF005FF96F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCFA259E07EF005FF96F /* Constants.swift */; };
 		85D6E4F7260446CA0063543A /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 85D6E4F6260446CA0063543A /* Preferences */; };
-		85D6E4FA260447BC0063543A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6E4F9260447BC0063543A /* Preferences.swift */; };
 		85D6E4FF2604481C0063543A /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6E4FE2604481C0063543A /* GeneralSettings.swift */; };
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
 		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
@@ -31,6 +30,7 @@
 		85F1D0F525A0D2C4001831C0 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F425A0D2C4001831C0 /* AboutScreen.swift */; };
 		85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */; };
 		85FB338326044ACD00FD7739 /* DeviceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FB338226044ACD00FD7739 /* DeviceSettings.swift */; };
+		85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 85FB33872604520C00FD7739 /* KeyboardShortcuts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +52,7 @@
 		85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSwitch.swift; sourceTree = "<group>"; };
 		85C4DCF4259E0405005FF96F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85C4DCF7259E04EE005FF96F /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		85C4DCFA259E07EF005FF96F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		85D6E4F9260447BC0063543A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		85C4DCFA259E07EF005FF96F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85D6E4FE2604481C0063543A /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		85F1D0DC259E754D001831C0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		85F1D0E3259F863D001831C0 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 			files = (
 				85C4DCF2259D7A07005FF96F /* Defaults in Frameworks */,
 				85D6E4F7260446CA0063543A /* Preferences in Frameworks */,
+				85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */,
 				850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */,
 				85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */,
 			);
@@ -115,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				85C4DCF7259E04EE005FF96F /* StatusBarController.swift */,
-				85C4DCFA259E07EF005FF96F /* Defaults.swift */,
+				85C4DCFA259E07EF005FF96F /* Constants.swift */,
 				85A011F625B28A3300F0A5B4 /* sound-effect.wav */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
 				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
@@ -144,9 +144,8 @@
 		85D6E501260448270063543A /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				85D6E4F9260447BC0063543A /* Preferences.swift */,
-				85FB338226044ACD00FD7739 /* DeviceSettings.swift */,
 				85D6E4FE2604481C0063543A /* GeneralSettings.swift */,
+				85FB338226044ACD00FD7739 /* DeviceSettings.swift */,
 				85F1D0E6259F8B19001831C0 /* IconSettings.swift */,
 			);
 			path = Preferences;
@@ -174,6 +173,7 @@
 				85F1D0D5259E6AA9001831C0 /* MenuBuilder */,
 				850AB8C425A120AF00E14EB9 /* LaunchAtLogin */,
 				85D6E4F6260446CA0063543A /* Preferences */,
+				85FB33872604520C00FD7739 /* KeyboardShortcuts */,
 			);
 			productName = "Instant Audio Switcher";
 			productReference = 85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */;
@@ -266,8 +266,7 @@
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
 				85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */,
 				8501EA4B25EC4AA000373D43 /* WhatsNew.swift in Sources */,
-				85C4DCFB259E07EF005FF96F /* Defaults.swift in Sources */,
-				85D6E4FA260447BC0063543A /* Preferences.swift in Sources */,
+				85C4DCFB259E07EF005FF96F /* Constants.swift in Sources */,
 				8501EA4225EC3DEB00373D43 /* WelcomeWindow.swift in Sources */,
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
 				85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */,
@@ -508,6 +507,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -530,6 +537,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85F1D0D4259E6AA9001831C0 /* XCRemoteSwiftPackageReference "MenuBuilder" */;
 			productName = MenuBuilder;
+		};
+		85FB33872604520C00FD7739 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
