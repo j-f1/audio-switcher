@@ -23,6 +23,8 @@
 		85C4DCFB259E07EF005FF96F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4DCFA259E07EF005FF96F /* Constants.swift */; };
 		85D6E4F7260446CA0063543A /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 85D6E4F6260446CA0063543A /* Preferences */; };
 		85D6E4FF2604481C0063543A /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D6E4FE2604481C0063543A /* GeneralSettings.swift */; };
+		85D8F849260A4C42000E3EC3 /* DeviceActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8F848260A4C42000E3EC3 /* DeviceActivation.swift */; };
+		85D8F84D260A4EDC000E3EC3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8F84C260A4EDC000E3EC3 /* Extensions.swift */; };
 		85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 85F1D0D5259E6AA9001831C0 /* MenuBuilder */; };
 		85F1D0DF259E756C001831C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F1D0DC259E754D001831C0 /* Main.storyboard */; };
 		85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0E3259F863D001831C0 /* IconPickerView.swift */; };
@@ -31,7 +33,6 @@
 		85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1D0F825A0D5C2001831C0 /* TransientWindowController.swift */; };
 		85FB338326044ACD00FD7739 /* DeviceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FB338226044ACD00FD7739 /* DeviceSettings.swift */; };
 		85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 85FB33872604520C00FD7739 /* KeyboardShortcuts */; };
-		85FB3396260507B100FD7739 /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 85FB3395260507B100FD7739 /* AboutScreen */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		85C4DCF7259E04EE005FF96F /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		85C4DCFA259E07EF005FF96F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85D6E4FE2604481C0063543A /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
+		85D8F848260A4C42000E3EC3 /* DeviceActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivation.swift; sourceTree = "<group>"; };
+		85D8F84C260A4EDC000E3EC3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		85F1D0DC259E754D001831C0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		85F1D0E3259F863D001831C0 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		85F1D0E6259F8B19001831C0 /* IconSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSettings.swift; sourceTree = "<group>"; };
@@ -72,7 +75,6 @@
 				85D6E4F7260446CA0063543A /* Preferences in Frameworks */,
 				85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */,
 				850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */,
-				85FB3396260507B100FD7739 /* AboutScreen in Frameworks */,
 				85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,9 +122,8 @@
 				85C4DCFA259E07EF005FF96F /* Constants.swift */,
 				85A011F625B28A3300F0A5B4 /* sound-effect.wav */,
 				85C4DCF4259E0405005FF96F /* AppDelegate.swift */,
-				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
-				856853E425B371BE00D59E2C /* AudioChangeNotifier.h */,
-				856853E525B371BE00D59E2C /* AudioChangeNotifier.m */,
+				85D8F84C260A4EDC000E3EC3 /* Extensions.swift */,
+				85D8F84F260A4EEB000E3EC3 /* Devices */,
 				85D6E501260448270063543A /* Preferences */,
 				856D242225A0EA7300D89DAE /* Windows */,
 				85F1D0DC259E754D001831C0 /* Main.storyboard */,
@@ -153,6 +154,17 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
+		85D8F84F260A4EEB000E3EC3 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				85D8F848260A4C42000E3EC3 /* DeviceActivation.swift */,
+				85BB5343259D1F8B00F0AC19 /* AudioSwitch.swift */,
+				856853E425B371BE00D59E2C /* AudioChangeNotifier.h */,
+				856853E525B371BE00D59E2C /* AudioChangeNotifier.m */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,7 +188,6 @@
 				850AB8C425A120AF00E14EB9 /* LaunchAtLogin */,
 				85D6E4F6260446CA0063543A /* Preferences */,
 				85FB33872604520C00FD7739 /* KeyboardShortcuts */,
-				85FB3395260507B100FD7739 /* AboutScreen */,
 			);
 			productName = "Instant Audio Switcher";
 			productReference = 85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */;
@@ -212,7 +223,6 @@
 				850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				85D6E4F5260446CA0063543A /* XCRemoteSwiftPackageReference "Preferences" */,
 				85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
-				85FB3394260507B100FD7739 /* XCRemoteSwiftPackageReference "AboutScreen" */,
 			);
 			productRefGroup = 85BB5330259D1F2A00F0AC19 /* Products */;
 			projectDirPath = "";
@@ -265,6 +275,7 @@
 				8501EA4725EC4A7D00373D43 /* WhatsNewWindow.swift in Sources */,
 				85F1D0EB259FBCDD001831C0 /* IconSettings.swift in Sources */,
 				85F1D0F925A0D5C2001831C0 /* TransientWindowController.swift in Sources */,
+				85D8F849260A4C42000E3EC3 /* DeviceActivation.swift in Sources */,
 				85C4DCF5259E0405005FF96F /* AppDelegate.swift in Sources */,
 				85D6E4FF2604481C0063543A /* GeneralSettings.swift in Sources */,
 				85BB5344259D1F8B00F0AC19 /* AudioSwitch.swift in Sources */,
@@ -275,6 +286,7 @@
 				85C4DCF8259E04EE005FF96F /* StatusBarController.swift in Sources */,
 				85F1D0E4259F863D001831C0 /* IconPickerView.swift in Sources */,
 				856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */,
+				85D8F84D260A4EDC000E3EC3 /* Extensions.swift in Sources */,
 				85F1D0F525A0D2C4001831C0 /* AboutScreen.swift in Sources */,
 				85FB338326044ACD00FD7739 /* DeviceSettings.swift in Sources */,
 			);
@@ -519,14 +531,6 @@
 				minimumVersion = 0.7.1;
 			};
 		};
-		85FB3394260507B100FD7739 /* XCRemoteSwiftPackageReference "AboutScreen" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/j-f1/AboutScreen.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.8;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -554,11 +558,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
-		};
-		85FB3395260507B100FD7739 /* AboutScreen */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85FB3394260507B100FD7739 /* XCRemoteSwiftPackageReference "AboutScreen" */;
-			productName = AboutScreen;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

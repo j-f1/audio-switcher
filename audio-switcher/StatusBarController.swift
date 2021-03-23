@@ -13,147 +13,19 @@ import AVFoundation
 import UserNotifications
 import KeyboardShortcuts
 
-extension DispatchTimeInterval: Comparable {
-  var nanoseconds: Int64? {
-    switch self {
-    case .seconds(let s): return Int64(s) * 1_000_000_000
-    case .milliseconds(let ms): return Int64(ms) * 1_000_000
-    case .microseconds(let μs): return Int64(μs) * 1_000
-    case .nanoseconds(let ns): return Int64(ns)
-    case .never: return nil
-    @unknown default: return nil
-    }
-  }
-
-  public static func < (_ lhs: DispatchTimeInterval, rhs: DispatchTimeInterval) -> Bool {
-    if let lhs = lhs.nanoseconds,
-       let rhs = rhs.nanoseconds {
-      return lhs < rhs
-    }
-    return false
-  }
-  public static func > (_ lhs: DispatchTimeInterval, rhs: DispatchTimeInterval) -> Bool {
-    if let lhs = lhs.nanoseconds,
-       let rhs = rhs.nanoseconds {
-      return lhs > rhs
-    }
-    return false
-  }
-}
-
 enum NotificationIdentifier {
   static let retryAction = "RetryAction"
   static let failureCategory = "connectionFailure"
 }
 
-class StatusBarController: NSObject, UNUserNotificationCenterDelegate {
+class StatusBarController: NSObject {
   private var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   private var menu = NSMenu()
   private var items: () -> [NSMenuItem]
 
-  lazy var audioPlayer: AVAudioPlayer? = {
-    guard let url = Bundle.main.url(forResource: "sound-effect", withExtension: "wav") else { return nil }
-    return try? AVAudioPlayer(contentsOf: url)
-  }()
-
-  let center: UNUserNotificationCenter = {
-    let center = UNUserNotificationCenter.current()
-    let notificationCategory = UNNotificationCategory(
-      identifier: NotificationIdentifier.failureCategory,
-      actions: [
-        UNNotificationAction(identifier: NotificationIdentifier.retryAction, title: "Try Again", options: [])
-      ],
-      intentIdentifiers: []
-    )
-    center.setNotificationCategories([notificationCategory])
-    return center
-  }()
-
-
-  func activateDevice() {
-    if let primaryDevice = Defaults[.deviceName] {
-      if let secondaryDevice = Defaults[.secondaryDeviceName],
-         primaryDevice == Device.selected(for: .output)?.name {
-        activateDevice(named: secondaryDevice)
-      } else {
-        activateDevice(named: primaryDevice)
-      }
-    } else {
-      reportActivationFailure(for: nil)
-    }
-  }
-
-  func activateDevice(named name: String) {
-    if let device = Device.named(name) {
-      DispatchQueue.global(qos: .userInitiated).async {
-        self.checkActivation(of: device)
-      }
-    } else {
-      reportActivationFailure(for: name)
-    }
-  }
-
-  func checkActivation(of device: Device, start: DispatchTime = .now()) {
-    device.activate(for: .output)
-    if Device.selected(for: .output) == device {
-      print("ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
-      if Defaults[.playSound] {
-        self.audioPlayer?.pause()
-        audioPlayer?.currentTime = 0
-        self.audioPlayer?.play()
-      }
-    } else if start.distance(to: .now()) > .seconds(5) {
-      reportActivationFailure(for: device.name)
-    } else {
-      DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .milliseconds(100)) {
-        self.checkActivation(of: device, start: start)
-      }
-    }
-  }
-
-  func reportActivationFailure(for name: String?) {
-    center.requestAuthorization(options: [.alert]) { (granted, err) in
-      if let err = err {
-        print(err)
-      }
-      if granted {
-        let content = UNMutableNotificationContent()
-        content.title = "Failed to activate \(name ?? "<unknown>")"
-        if let name = name, Device.named(name) == nil {
-          content.body = "No device with that name is currently available."
-        }
-        content.categoryIdentifier = NotificationIdentifier.failureCategory
-        let notif = UNNotificationRequest(identifier: name ?? "<unknown>", content: content, trigger: nil)
-        self.center.add(notif) { (err) in
-          if let err = err {
-            print(err)
-          }
-        }
-      }
-    }
-  }
-
-  func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    completionHandler([.banner])
-  }
-
-  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    switch response.actionIdentifier {
-    case UNNotificationDefaultActionIdentifier:
-      // User tapped on message itself rather than on an Action button
-      break
-    case NotificationIdentifier.retryAction:
-      activateDevice(named: response.notification.request.identifier)
-    default:
-      break
-    }
-    completionHandler()
-  }
-
   init(@MenuBuilder items: @escaping () -> [NSMenuItem]) {
     self.items = items
     super.init()
-    center.delegate = self
 
     Defaults.observe(keys: .iconName, options: [.initial]) { [weak self] in
       self?.statusItem.button?.image = NSImage(systemSymbolName: Defaults[.iconName], accessibilityDescription: nil)!

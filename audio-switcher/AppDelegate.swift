@@ -16,15 +16,6 @@ func quote(_ str: String) -> String {
   "“\(str)\u{200d}”"
 }
 
-extension Array {
-  var only: Element? {
-    if count == 1 {
-      return first
-    }
-    return nil
-  }
-}
-
 @NSApplicationMain
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
   var statusBar: StatusBarController!
@@ -64,7 +55,7 @@ extension Array {
       let isActive = Device.selected(for: .output) == device
       MenuItem(label)
         .state(isActive ? .on : .off)
-        .onSelect { self.statusBar.activateDevice(named: name) }
+        .onSelect { activateDevice(named: name) }
     } else {
       MenuItem("\(quote(name)) is not available")
     }
