@@ -40,12 +40,15 @@ fileprivate var audioPlayer: AVAudioPlayer? = {
 
 func checkActivation(of device: Device, start: DispatchTime = .now()) {
   device.activate(for: .output)
+  device.activate(for: .systemOutput)
   if Device.selected(for: .output) == device {
     print("activation of \(device.name ?? "<unknown>") ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
     if Defaults[.playSound] {
-      audioPlayer?.pause()
-      audioPlayer?.currentTime = 0
-      audioPlayer?.play()
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+        audioPlayer?.pause()
+        audioPlayer?.currentTime = 0
+        audioPlayer?.play()
+      }
     }
   } else if start.distance(to: .now()) > .seconds(5) {
     NotificationHandler.shared.reportActivationFailure(for: device.name)
