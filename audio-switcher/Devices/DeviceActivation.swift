@@ -39,8 +39,10 @@ fileprivate var audioPlayer: AVAudioPlayer? = {
 }()
 
 func checkActivation(of device: Device, start: DispatchTime = .now()) {
+  if Device.selected(for: .output) == Device.selected(for: .systemOutput) {
+    device.activate(for: .systemOutput)
+  }
   device.activate(for: .output)
-  device.activate(for: .systemOutput)
   if Device.selected(for: .output) == device {
     print("activation of \(device.name ?? "<unknown>") ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
     if Defaults[.playSound] {
