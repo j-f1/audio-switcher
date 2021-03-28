@@ -38,10 +38,10 @@ extension ChangelogEntry: View {
       switch self {
       case .feature(let s):
         Token(color: .green, text: "NEW")
-        Text(s)
+        Text(s).fixedSize(horizontal: false, vertical: true)
       case .bug(let s):
         Token(color: .orange, text: "FIXED")
-        Text(s)
+        Text(s).fixedSize(horizontal: false, vertical: true)
       }
     }.padding(1)
   }
@@ -69,7 +69,6 @@ struct WhatsNewWindow: View {
     }
     .padding()
     .padding(.horizontal)
-    .background(Color(NSColor.textBackgroundColor))
     .frame(width: 650)
   }
 }

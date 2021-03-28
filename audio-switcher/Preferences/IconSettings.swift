@@ -20,7 +20,7 @@ struct IconSettings: View {
           IconPickerView(selectedIcon: $selectedIcon)
         }
       }
-    }
+    }.fixedSize()
   }
 }
 

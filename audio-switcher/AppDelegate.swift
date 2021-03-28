@@ -62,8 +62,7 @@ func quote(_ str: String) -> String {
   }
 
   func applicationDidFinishLaunching(_ notification: Notification) {
-    prefsWC.window!.backgroundColor = NSColor.underPageBackgroundColor
-    welcomeWC.window!.backgroundColor = NSColor.underPageBackgroundColor
+    welcomeWC.window!.backgroundColor = .underPageBackgroundColor
     let newVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
       // forgot to add release notes, oops!

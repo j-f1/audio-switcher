@@ -39,7 +39,7 @@ struct DeviceSettings: View {
           DevicePickerView(selectedDevice: $secondarySelectedDevice, alreadySelected: selectedDevice)
         }
       }
-    }
+    }.fixedSize()
   }
 }
 
