@@ -41,6 +41,7 @@
 		8501EA4A25EC4AA000373D43 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		850AB8B525A118A000E14EB9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		850AB8BD25A11CB900E14EB9 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8527644F26110B3400FBEA0A /* release-checklist.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "release-checklist.md"; sourceTree = "<group>"; };
 		856853E325B371BD00D59E2C /* Instant Audio Switcher-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Instant Audio Switcher-Bridging-Header.h"; sourceTree = "<group>"; };
 		856853E425B371BE00D59E2C /* AudioChangeNotifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioChangeNotifier.h; sourceTree = "<group>"; };
 		856853E525B371BE00D59E2C /* AudioChangeNotifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioChangeNotifier.m; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				850AB8B525A118A000E14EB9 /* README.md */,
+				8527644F26110B3400FBEA0A /* release-checklist.md */,
 				850AB8BD25A11CB900E14EB9 /* LICENSE */,
 				85BB5331259D1F2A00F0AC19 /* audio-switcher */,
 				85BB5330259D1F2A00F0AC19 /* Products */,
