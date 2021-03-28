@@ -27,7 +27,7 @@ let debugSetting = [
   }
 ]
 #else
-let debugSetting: [Preferences.Pane] = []
+let debugSetting: [PreferencePaneConvertible] = []
 #endif
 
 
