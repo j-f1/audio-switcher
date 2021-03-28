@@ -16,6 +16,21 @@ func quote(_ str: String) -> String {
   "“\(str)\u{200d}”"
 }
 
+#if DEBUG
+let debugSetting = [
+  Preferences.Pane(
+    identifier: .debug,
+    title: "Debug",
+    toolbarIcon: NSImage(systemSymbolName: "ant.fill", accessibilityDescription: "Debug preferences")!
+  ) {
+    DebugSettings()
+  }
+]
+#else
+let debugSetting = []
+#endif
+
+
 @NSApplicationMain
 @objc class AppDelegate: NSObject, NSApplicationDelegate {
   var statusBar: StatusBarController!
@@ -42,7 +57,7 @@ func quote(_ str: String) -> String {
       ) {
         IconSettings()
       },
-    ]
+    ] + debugSetting
   )
   let welcomeWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WelcomeWindow")
   let whatsNewWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "WhatsNewWindow")
