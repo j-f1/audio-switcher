@@ -25,14 +25,18 @@ extension ChangelogEntry: Identifiable {
 enum Version: String, Identifiable {
   var id: String { rawValue }
 
+  case v1_4 = "1.4"
   case v1_3_1 = "1.3.1"
   case v1_3 = "1.3"
   case v1_2 = "1.2"
   case v1_1 = "1.1"
 
-  static let allVersions: [Version] = [.v1_3_1, .v1_3, .v1_2, .v1_1]
+  static let allVersions: [Version] = [.v1_4, .v1_3_1, .v1_3, .v1_2, .v1_1]
   var changelog: [ChangelogEntry] {
     switch self {
+    case .v1_4: return [
+      .feature("Sound effects will also be rerouted if they are being sent to the same output device as regular audio")
+    ]
     case .v1_3_1: return [
       .bug("Disabling “Play sound after connecting” now turns off the sound effect played after connecting")
     ]
