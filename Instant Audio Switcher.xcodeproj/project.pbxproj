@@ -11,6 +11,7 @@
 		8501EA4725EC4A7D00373D43 /* WhatsNewWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501EA4625EC4A7C00373D43 /* WhatsNewWindow.swift */; };
 		8501EA4B25EC4AA000373D43 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501EA4A25EC4AA000373D43 /* WhatsNew.swift */; };
 		850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 850AB8C425A120AF00E14EB9 /* LaunchAtLogin */; };
+		8527645326110DD500FBEA0A /* AboutScreen in Frameworks */ = {isa = PBXBuildFile; productRef = 8527645226110DD500FBEA0A /* AboutScreen */; };
 		856853E625B371BE00D59E2C /* AudioChangeNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 856853E525B371BE00D59E2C /* AudioChangeNotifier.m */; };
 		85A011F725B28A3300F0A5B4 /* sound-effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 85A011F625B28A3300F0A5B4 /* sound-effect.wav */; };
 		85BB5335259D1F2A00F0AC19 /* DevicePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB5334259D1F2A00F0AC19 /* DevicePickerView.swift */; };
@@ -76,6 +77,7 @@
 				85D6E4F7260446CA0063543A /* Preferences in Frameworks */,
 				85FB33882604520C00FD7739 /* KeyboardShortcuts in Frameworks */,
 				850AB8C525A120AF00E14EB9 /* LaunchAtLogin in Frameworks */,
+				8527645326110DD500FBEA0A /* AboutScreen in Frameworks */,
 				85F1D0D6259E6AA9001831C0 /* MenuBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +192,7 @@
 				850AB8C425A120AF00E14EB9 /* LaunchAtLogin */,
 				85D6E4F6260446CA0063543A /* Preferences */,
 				85FB33872604520C00FD7739 /* KeyboardShortcuts */,
+				8527645226110DD500FBEA0A /* AboutScreen */,
 			);
 			productName = "Instant Audio Switcher";
 			productReference = 85BB532F259D1F2A00F0AC19 /* Instant Audio Switcher.app */;
@@ -225,6 +228,7 @@
 				850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				85D6E4F5260446CA0063543A /* XCRemoteSwiftPackageReference "Preferences" */,
 				85FB33862604520C00FD7739 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				8527645126110DD500FBEA0A /* XCRemoteSwiftPackageReference "AboutScreen" */,
 			);
 			productRefGroup = 85BB5330259D1F2A00F0AC19 /* Products */;
 			projectDirPath = "";
@@ -421,7 +425,7 @@
 				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"audio-switcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -432,7 +436,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "audio-switcher/Instant Audio Switcher-Bridging-Header.h";
@@ -450,7 +454,7 @@
 				CODE_SIGN_ENTITLEMENTS = "audio-switcher/Instant_Audio_Switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"audio-switcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -461,7 +465,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jedfox.Instant-Audio-Switcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "audio-switcher/Instant Audio Switcher-Bridging-Header.h";
@@ -499,6 +503,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
+			};
+		};
+		8527645126110DD500FBEA0A /* XCRemoteSwiftPackageReference "AboutScreen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/j-f1/AboutScreen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.8;
 			};
 		};
 		85C4DCF0259D7A07005FF96F /* XCRemoteSwiftPackageReference "Defaults" */ = {
@@ -540,6 +552,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 850AB8C325A120AF00E14EB9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
+		};
+		8527645226110DD500FBEA0A /* AboutScreen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8527645126110DD500FBEA0A /* XCRemoteSwiftPackageReference "AboutScreen" */;
+			productName = AboutScreen;
 		};
 		85C4DCF1259D7A07005FF96F /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
