@@ -27,7 +27,7 @@ let debugSetting = [
   }
 ]
 #else
-let debugSetting = []
+let debugSetting: [Preferences.Pane] = []
 #endif
 
 
