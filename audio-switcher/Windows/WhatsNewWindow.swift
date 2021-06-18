@@ -68,8 +68,7 @@ struct WhatsNewWindow: View {
       }
     }
     .padding()
-    .padding(.horizontal)
-    .frame(width: 650)
+    .frame(width: fromVersion == "1.0" ? 450 : 400)
   }
 }
 
