@@ -119,10 +119,9 @@ let debugSetting: [PreferencePaneConvertible] = []
             }
             .padding(5)
           }
-        // not using a for loop because they aren’t supported until Xcode 12.5
-        let first = names[0], second = names[1]
-        self.makeDeviceItem(name: first, label: first)
-        self.makeDeviceItem(name: second, label: second)
+        for name in names {
+          self.makeDeviceItem(name: name, label: name)
+        }
       }
       SeparatorItem()
       MenuItem("Preferences")
