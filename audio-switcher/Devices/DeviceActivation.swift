@@ -39,8 +39,15 @@ fileprivate var audioPlayer: AVAudioPlayer? = {
 }()
 
 func checkActivation(of device: Device, start: DispatchTime = .now()) {
-  if Device.selected(for: .output) == Device.selected(for: .systemOutput) {
+  switch Defaults[.effectOutputBehavior] {
+  case .auto:
+    if Device.selected(for: .output) == Device.selected(for: .systemOutput) {
+      device.activate(for: .systemOutput)
+    }
+  case .always:
     device.activate(for: .systemOutput)
+  case .never:
+    break
   }
   device.activate(for: .output)
   if Device.selected(for: .output) == device {

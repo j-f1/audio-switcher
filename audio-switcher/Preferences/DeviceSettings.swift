@@ -13,6 +13,7 @@ import Preferences
 struct DeviceSettings: View {
   @Default(.deviceName) var selectedDevice
   @Default(.secondaryDeviceName) var secondarySelectedDevice
+  @Default(.effectOutputBehavior) var effectOutputBehavior
   @State var secondDeviceEnabled: Bool
 
   init() {
@@ -38,6 +39,13 @@ struct DeviceSettings: View {
         if secondDeviceEnabled {
           DevicePickerView(selectedDevice: $secondarySelectedDevice, alreadySelected: selectedDevice)
         }
+      }
+      Preferences.Section(title: "Sound Effects") {
+        Picker(selection: $effectOutputBehavior, label: EmptyView()) {
+          Text("Change the sound effects output to match the selected audio output when it matches the previous audio output").tag(EffectOutputBehavior.auto)
+          Text("Always change the sound effect output to match the standard output").tag(EffectOutputBehavior.always)
+          Text("Never change the sound effect output").tag(EffectOutputBehavior.never)
+        }.pickerStyle(RadioGroupPickerStyle())
       }
     }.fixedSize()
   }
