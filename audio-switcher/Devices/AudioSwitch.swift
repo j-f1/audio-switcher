@@ -98,28 +98,28 @@ extension Device {
   }
 }
 
-func read<Data>(
+func read<Value>(
   property: AudioObjectPropertySelector,
   from object: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
   in scope: AudioObjectProperty.Scope = .global,
-  defaultValue: Data
-) -> Data? {
+  defaultValue: Value
+) -> Value? {
   var val = defaultValue
   var err: OSStatus!
   withUnsafeMutablePointer(to: &val) { ptr in
-    var dataSize = UInt32(MemoryLayout<Data>.size)
+    var valueSize = UInt32(MemoryLayout<Value>.size)
     var address = AudioObjectPropertyAddress(
       mSelector: property,
       mScope: scope.rawValue,
       mElement: kAudioObjectPropertyElementMaster
     )
-    
+
     err = AudioObjectGetPropertyData(
       /* inObjectId */ object,
       /* inAddress */ &address,
       /* inQualifierDataSize */ 0,
       /* inQualifierData */ nil,
-      /* ioDataSize */ &dataSize,
+      /* ioDataSize */ &valueSize,
       /* outData */ ptr
     )
   }
@@ -129,16 +129,16 @@ func read<Data>(
   return val
 }
 
-func set<Data>(
+func set<Value>(
   property: AudioObjectPropertySelector,
   from object: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
   in scope: AudioObjectProperty.Scope = .global,
-  to value: Data
+  to value: Value
 ) -> Bool {
   var val = value
   var err: OSStatus!
   withUnsafeMutablePointer(to: &val) { ptr in
-    let dataSize = UInt32(MemoryLayout<Data>.size)
+    let valueSize = UInt32(MemoryLayout<Value>.size)
     var address = AudioObjectPropertyAddress(
       mSelector: property,
       mScope: scope.rawValue,
@@ -150,7 +150,7 @@ func set<Data>(
       /* inAddress */ &address,
       /* inQualifierDataSize */ 0,
       /* inQualifierData */ nil,
-      /* inDataSize */ dataSize,
+      /* inDataSize */ valueSize,
       /* inData */ ptr
     )
   }
