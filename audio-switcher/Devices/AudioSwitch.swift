@@ -68,24 +68,24 @@ extension Device {
   }
   
   static var all: [Device] {
-    var length: UInt32 = sizeOf(property: kAudioHardwarePropertyDevices)!
     var err: OSStatus = 0
-    let devices = [AudioDeviceID](unsafeUninitializedCapacity: Int(length)) { (ptr, len) in
-      len = Int(length)
+    let devices = [AudioDeviceID](unsafeUninitializedCapacity: Int(sizeOf(property: kAudioHardwarePropertyDevices)!)) { (ptr, length) in
       var address = AudioObjectPropertyAddress(
         mSelector: kAudioHardwarePropertyDevices,
         mScope: AudioObjectProperty.Scope.global.rawValue,
         mElement: kAudioObjectPropertyElementMaster
       )
-      
+
+      var uint32Length = UInt32(length)
       err = AudioObjectGetPropertyData(
         /* inObjectId */ AudioObjectID(kAudioObjectSystemObject),
         /* inAddress */ &address,
         /* inQualifierDataSize */ 0,
         /* inQualifierData */ nil,
-        /* ioDataSize */ &length,
+        /* ioDataSize */ &uint32Length,
         /* outData */ ptr.baseAddress!
       )
+      length = Int(uint32Length)
     }
     if err != kAudioHardwareNoError {
       return []
