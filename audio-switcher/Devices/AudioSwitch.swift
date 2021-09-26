@@ -7,7 +7,7 @@
 //
 
 import CoreServices
-import CoreAudio
+import CoreAudio.AudioHardware
 import Combine
 
 enum DeviceType {
