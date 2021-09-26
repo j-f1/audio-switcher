@@ -11,15 +11,10 @@ import LaunchAtLogin
 import Preferences
 
 struct DeviceSettings: View {
-  @Default(.deviceName) var selectedDevice
-  @Default(.secondaryDeviceName) var secondarySelectedDevice
-  @Default(.effectOutputBehavior) var effectOutputBehavior
-  @State var secondDeviceEnabled: Bool
-
-  init() {
-    self._secondDeviceEnabled = .init(initialValue: false)
-    self._secondDeviceEnabled = .init(initialValue: secondarySelectedDevice != nil)
-  }
+  @Default(.deviceName) private var selectedDevice
+  @Default(.secondaryDeviceName) private var secondarySelectedDevice
+  @Default(.effectOutputBehavior) private var effectOutputBehavior
+  @State private var secondDeviceEnabled = Defaults[.secondaryDeviceName] != nil
 
   var body: some View {
     Preferences.Container(contentWidth: 450) {
