@@ -69,14 +69,15 @@ extension Device {
   
   static var all: [Device] {
     var err: OSStatus = 0
-    let devices = [AudioDeviceID](unsafeUninitializedCapacity: Int(sizeOf(property: kAudioHardwarePropertyDevices)!)) { (ptr, length) in
+    let capacity = Int(sizeOf(property: kAudioHardwarePropertyDevices)!)
+    let devices = [AudioDeviceID](unsafeUninitializedCapacity: capacity) { (ptr, length) in
       var address = AudioObjectPropertyAddress(
         mSelector: kAudioHardwarePropertyDevices,
         mScope: AudioObjectProperty.Scope.global.rawValue,
         mElement: kAudioObjectPropertyElementMaster
       )
 
-      var uint32Length = UInt32(length)
+      var uint32Length = UInt32(capacity)
       err = AudioObjectGetPropertyData(
         /* inObjectId */ AudioObjectID(kAudioObjectSystemObject),
         /* inAddress */ &address,
