@@ -74,7 +74,7 @@ extension Device {
       var address = AudioObjectPropertyAddress(
         mSelector: kAudioHardwarePropertyDevices,
         mScope: AudioObjectProperty.Scope.global.rawValue,
-        mElement: kAudioObjectPropertyElementMaster
+        mElement: kAudioObjectPropertyElementWildcard
       )
 
       var uint32Length = UInt32(capacity)
@@ -112,7 +112,7 @@ func read<Value>(
     var address = AudioObjectPropertyAddress(
       mSelector: property,
       mScope: scope.rawValue,
-      mElement: kAudioObjectPropertyElementMaster
+      mElement: kAudioObjectPropertyElementWildcard
     )
 
     err = AudioObjectGetPropertyData(
@@ -143,7 +143,7 @@ func set<Value>(
     var address = AudioObjectPropertyAddress(
       mSelector: property,
       mScope: scope.rawValue,
-      mElement: kAudioObjectPropertyElementMaster
+      mElement: kAudioObjectPropertyElementWildcard
     )
     
     err = AudioObjectSetPropertyData(
@@ -168,7 +168,7 @@ func sizeOf(
   var address = AudioObjectPropertyAddress(
     mSelector: property,
     mScope: scope.rawValue,
-    mElement: kAudioObjectPropertyElementMaster
+    mElement: kAudioObjectPropertyElementWildcard
   )
   
   err = AudioObjectGetPropertyDataSize(
