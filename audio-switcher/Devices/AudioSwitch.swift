@@ -9,6 +9,7 @@
 import CoreServices
 import CoreAudio.AudioHardware
 import Combine
+import CloudKit
 
 enum DeviceType {
   case input
@@ -39,6 +40,10 @@ class Device: Identifiable, Equatable, Hashable {
   let id: AudioObjectID
   init(id: AudioObjectID) {
     self.id = id
+  }
+
+  var uuid: String? {
+    read(property: kAudioDevicePropertyDeviceUID, from: id, defaultValue: "" as CFString) as String?
   }
   
   var name: String? {
@@ -95,7 +100,9 @@ extension Device {
   }
   
   static var named: [Device] {
-    all.filter { $0.name != nil }
+    let result = all.filter { $0.name != nil }
+    print(result.map { ($0.name, $0.uuid) })
+    return result
   }
 }
 

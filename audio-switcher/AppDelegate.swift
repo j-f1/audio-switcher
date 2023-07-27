@@ -65,12 +65,12 @@ let debugSetting: [PreferencePaneConvertible] = []
   let aboutWC: TransientWindowController = NSStoryboard.main!.instantiateController(identifier: "AboutWindow")
   #endif
 
-  @MenuBuilder func makeDeviceItem(name: String, label: String) -> [NSMenuItem] {
+  @MenuBuilder func makeDeviceItem(name: String, label: String, activateInput: Bool) -> [NSMenuItem] {
     if let device = Device.named(name) {
       let isActive = Device.selected(for: .output) == device
       MenuItem(label)
         .state(isActive ? .on : .off)
-        .onSelect { activateDevice(named: name) }
+        .onSelect { activateDevice(named: name, activateInput: activateInput) }
     } else {
       MenuItem("\(quote(name)) is not available")
     }
@@ -100,11 +100,14 @@ let debugSetting: [PreferencePaneConvertible] = []
       SeparatorItem()
       #endif
       let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
-      let names: [String] = [Defaults[.deviceName], Defaults[.secondaryDeviceName]].compactMap { $0 }
+      let names: [(name: String, activateInput: Bool)] = [
+        (Defaults[.deviceName], Defaults[.switchInputToo]),
+        (Defaults[.secondaryDeviceName], Defaults[.secondarySwitchInputToo])
+      ].compactMap { device in device.0.map { ($0, device.1) } }
       if names.isEmpty {
         MenuItem("Choose a device to activate in Preferences")
-      } else if let name = names.only {
-        self.makeDeviceItem(name: name, label: "Activate \(name)")
+      } else if let (name, activateInput) = names.only {
+        self.makeDeviceItem(name: name, label: "Activate \(name)", activateInput: activateInput)
       } else {
         MenuItem("Active Device")
           .view {
@@ -114,13 +117,13 @@ let debugSetting: [PreferencePaneConvertible] = []
                 .textCase(.uppercase)
                 .font(.caption)
                 .foregroundColor(.secondary)
-                .offset(x: names.contains { Device.selected(for: .output)?.name == $0 } ? 20 : 10)
+                .offset(x: names.contains { Device.selected(for: .output)?.name == $0.name } ? 20 : 10)
               Spacer()
             }
             .padding(5)
           }
-        for name in names {
-          self.makeDeviceItem(name: name, label: name)
+        for (name, activateInput) in names {
+          self.makeDeviceItem(name: name, label: name, activateInput: activateInput)
         }
       }
       SeparatorItem()

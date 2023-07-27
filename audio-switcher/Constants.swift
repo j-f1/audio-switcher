@@ -16,7 +16,9 @@ extension Defaults.Keys {
   static let effectOutputBehavior = Key<EffectOutputBehavior>("effectOutputBehavior", default: .auto)
 
   static let deviceName = Key<String?>("deviceName")
+  static let switchInputToo = Key<Bool>("switchInputToo", default: false)
   static let secondaryDeviceName = Key<String?>("secondaryDeviceName")
+  static let secondarySwitchInputToo = Key<Bool>("secondarySwitchInputToo", default: false)
   static let iconName = Key<String>("iconName", default: "sparkles")
 
   static let latestRunVersion = Key<String?>("latestRunVersion")

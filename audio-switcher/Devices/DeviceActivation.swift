@@ -14,22 +14,22 @@ func activateDevice() {
   if let primaryDevice = Defaults[.deviceName] {
     if let secondaryDevice = Defaults[.secondaryDeviceName],
        primaryDevice == Device.selected(for: .output)?.name {
-      activateDevice(named: secondaryDevice)
+      activateDevice(named: secondaryDevice, activateInput: Defaults[.secondarySwitchInputToo])
     } else {
-      activateDevice(named: primaryDevice)
+      activateDevice(named: primaryDevice, activateInput: Defaults[.switchInputToo])
     }
   } else {
-    NotificationHandler.shared.reportActivationFailure(for: nil)
+    NotificationHandler.shared.reportActivationFailure(for: nil, activateInput: true)
   }
 }
 
-func activateDevice(named name: String) {
+func activateDevice(named name: String, activateInput: Bool) {
   if let device = Device.named(name) {
     DispatchQueue.global(qos: .userInitiated).async {
-      checkActivation(of: device)
+      checkActivation(of: device, activateInput: activateInput)
     }
   } else {
-    NotificationHandler.shared.reportActivationFailure(for: name)
+    NotificationHandler.shared.reportActivationFailure(for: name, activateInput: activateInput)
   }
 }
 
@@ -38,7 +38,7 @@ fileprivate var audioPlayer: AVAudioPlayer? = {
   return try? AVAudioPlayer(contentsOf: url)
 }()
 
-func checkActivation(of device: Device, start: DispatchTime = .now()) {
+func checkActivation(of device: Device, start: DispatchTime = .now(), activateInput: Bool) {
   switch Defaults[.effectOutputBehavior] {
   case .auto:
     if Device.selected(for: .output) == Device.selected(for: .systemOutput) {
@@ -50,7 +50,10 @@ func checkActivation(of device: Device, start: DispatchTime = .now()) {
     break
   }
   device.activate(for: .output)
-  if Device.selected(for: .output) == device {
+  if activateInput {
+    device.activate(for: .input)
+  }
+  if Device.selected(for: .output) == device && (!activateInput || Device.selected(for: .input) == device) {
     print("activation of \(device.name ?? "<unknown>") ok after \(CGFloat(start.distance(to: .now()).nanoseconds!) / 1_000_000) ms")
     if Defaults[.playSound] {
       DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
@@ -60,10 +63,10 @@ func checkActivation(of device: Device, start: DispatchTime = .now()) {
       }
     }
   } else if start.distance(to: .now()) > .seconds(5) {
-    NotificationHandler.shared.reportActivationFailure(for: device.name)
+    NotificationHandler.shared.reportActivationFailure(for: device.name, activateInput: activateInput)
   } else {
     DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .milliseconds(100)) {
-      checkActivation(of: device, start: start)
+      checkActivation(of: device, start: start, activateInput: activateInput)
     }
   }
 }
@@ -88,7 +91,7 @@ fileprivate class NotificationHandler: NSObject, UNUserNotificationCenterDelegat
     return center
   }()
 
-  func reportActivationFailure(for name: String?) {
+  func reportActivationFailure(for name: String?, activateInput: Bool) {
     center.requestAuthorization(options: [.alert]) { (granted, err) in
       if let err = err {
         print(err)
@@ -100,6 +103,7 @@ fileprivate class NotificationHandler: NSObject, UNUserNotificationCenterDelegat
           content.body = "No device with that name is currently available."
         }
         content.categoryIdentifier = NotificationIdentifier.failureCategory
+        content.userInfo["activateInput"] = activateInput
         let notif = UNNotificationRequest(identifier: name ?? "<unknown>", content: content, trigger: nil)
         self.center.add(notif) { (err) in
           if let err = err {
@@ -120,7 +124,7 @@ fileprivate class NotificationHandler: NSObject, UNUserNotificationCenterDelegat
       // User tapped on message itself rather than on an Action button
       break
     case NotificationIdentifier.retryAction:
-      activateDevice(named: response.notification.request.identifier)
+      activateDevice(named: response.notification.request.identifier, activateInput: response.notification.request.content.userInfo["activateInput"] as! Bool)
     default:
       break
     }

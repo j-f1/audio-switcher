@@ -14,12 +14,20 @@ struct DeviceSettings: View {
   @Default(.deviceName) private var selectedDevice
   @Default(.secondaryDeviceName) private var secondarySelectedDevice
   @Default(.effectOutputBehavior) private var effectOutputBehavior
+  @Default(.switchInputToo) private var switchInputToo
   @State private var secondDeviceEnabled = Defaults[.secondaryDeviceName] != nil
+
+  private func shouldDisableInputToggle(for name: String?) -> Bool {
+    guard let name = name, let device = Device.named(name) else { return false }
+    return !device.isInput
+  }
 
   var body: some View {
     Preferences.Container(contentWidth: 450) {
       Preferences.Section(title: "Device to Activate") {
         DevicePickerView(selectedDevice: $selectedDevice, alreadySelected: secondDeviceEnabled ? secondarySelectedDevice : nil)
+        Toggle("Also select this device as input when activating it", isOn: $switchInputToo)
+          .disabled(shouldDisableInputToggle(for: selectedDevice))
       }
       Preferences.Section(title: "Secondary Device") {
         Toggle(isOn: $secondDeviceEnabled) {
